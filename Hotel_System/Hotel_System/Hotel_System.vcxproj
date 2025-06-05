@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Apartment.cpp" />
+    <ClCompile Include="Guest.cpp" />
     <ClCompile Include="Hotel_System.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="PricingStrategy.cpp" />
@@ -138,13 +139,16 @@
     <ClInclude Include="ConferenceRoom.h" />
     <ClInclude Include="DoubleRoom.h" />
     <ClInclude Include="Guest.h" />
+    <ClInclude Include="HelperFunctions.h" />
     <ClInclude Include="LuxuryRoom.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
+    <ClInclude Include="Period.h" />
     <ClInclude Include="PricingStrategy.h" />
     <ClInclude Include="Reservation.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="SingleRoom.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

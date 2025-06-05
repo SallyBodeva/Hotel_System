@@ -1,6 +1,7 @@
 #pragma once
 #include "PricingStrategy.h"
 #include "MyString.h"
+#include "Period.h"
 
 enum class Status
 {
@@ -19,6 +20,8 @@ public:
 	void setStrategy(PricingStrategy* newStrategy);
 	double calculatePrice(double intialPrice);
 
+	bool getRoomAvailabilityDuringPeriod(Period period);
+
 	MyString getStatus(); 
 
 	virtual void serialize() = 0;
@@ -29,4 +32,5 @@ private:
 	double intialPrice;
 	Status status;
 	PricingStrategy* pricingStrategy;
+	bool isAvailable;
 };

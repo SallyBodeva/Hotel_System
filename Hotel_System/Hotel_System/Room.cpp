@@ -28,6 +28,11 @@ double Room::calculatePrice(double intialPrice)
 	return this->pricingStrategy->calculatePrice(intialPrice);
 }
 
+bool Room::getRoomAvailabilityDuringPeriod(Period period)
+{
+	return false;
+}
+
 MyString Room::getStatus()
 {
 	return MyString();
