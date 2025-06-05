@@ -127,16 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Apartment.cpp" />
     <ClCompile Include="Hotel_System.cpp" />
+    <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="PricingStrategy.cpp" />
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apartment.h" />
     <ClInclude Include="ConferenceRoom.h" />
     <ClInclude Include="DoubleRoom.h" />
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="LuxuryRoom.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="PricingStrategy.h" />
+    <ClInclude Include="Reservation.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="SingleRoom.h" />
   </ItemGroup>
