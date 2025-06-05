@@ -1,7 +1,8 @@
 #pragma once
 #include "MyString.h"
 #include "MyVector.hpp"
-#include "Reservation.h"
+
+class Reservation;
 
 enum class Classification
 {
@@ -25,5 +26,5 @@ private:
 	Classification classifiication;
 
 
-	MyVector <Reservation> previousReservations;
+	MyVector <Reservation*> previousReservations;
 };

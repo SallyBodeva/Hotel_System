@@ -33,6 +33,9 @@
     <ClCompile Include="Guest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PricingStrategy.h">
@@ -75,6 +78,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Accountant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Receptionist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

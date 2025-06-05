@@ -26,6 +26,7 @@ public:
 
 	virtual void serialize() = 0;
 	virtual void deserialize() = 0;
+	virtual MyString getType() = 0;
 
 private:
 	int roomNumber;

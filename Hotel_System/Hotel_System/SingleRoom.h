@@ -5,4 +5,5 @@ class SingleRoom : public Room {
 public:
 	void serialize() override;
 	void deserialize()  override;
+	MyString getType() override;
 };

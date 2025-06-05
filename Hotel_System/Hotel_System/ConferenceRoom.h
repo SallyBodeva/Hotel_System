@@ -6,6 +6,7 @@ public:
 
 	void serialize() override;
 	void deserialize()  override;
+	MyString getType() override;
 
 private:
 };
