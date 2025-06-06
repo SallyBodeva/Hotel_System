@@ -28,6 +28,8 @@ public:
 	virtual void deserialize() = 0;
 	virtual MyString getType() = 0;
 
+	virtual ~Room() = default;
+
 private:
 	int roomNumber;
 	double intialPrice;

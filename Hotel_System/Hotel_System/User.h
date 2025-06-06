@@ -13,7 +13,7 @@ public:
 	User() = default;
 	User(const MyString& username, const MyString& password);
 	virtual Role getRole() = 0;
-
+	virtual ~User() = default;
 
 private:
 	int id;
