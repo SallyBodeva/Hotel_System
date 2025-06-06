@@ -4,15 +4,9 @@
 class Command {
 public:
 
-	Command(const MyString& name, const MyString& info, const MyString& description, int argumentsCount);
+	Command() = default;
 	virtual void execute() const = 0;
 	virtual ~Command() = default;
-
-private:
-	const MyString name;
-	const MyString info;
-	const MyString description;
-	int argumentsCount;
 };
 
 class LogIn : public Command{
@@ -68,3 +62,5 @@ public:
 	CalculateIncome() = default;
 	void execute() const override;
 };
+
+//TO DO

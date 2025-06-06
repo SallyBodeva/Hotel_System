@@ -130,7 +130,7 @@
     <ClCompile Include="Apartment.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="Guest.cpp" />
-    <ClCompile Include="Hotel_System.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="PricingStrategy.cpp" />
     <ClCompile Include="Room.cpp" />
@@ -154,6 +154,7 @@
     <ClInclude Include="Reservation.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="SingleRoom.h" />
+    <ClInclude Include="System.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
