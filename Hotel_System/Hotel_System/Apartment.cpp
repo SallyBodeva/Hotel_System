@@ -1,9 +1,6 @@
 #include "Apartment.h"
 
-void Appartment::serialize()
+MyString Apartment::getType() const
 {
-}
-
-void Appartment::deserialize()
-{
+	return MyString("Apartment");
 }

@@ -129,11 +129,17 @@
   <ItemGroup>
     <ClCompile Include="Apartment.cpp" />
     <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="ConferenceRoom.cpp" />
+    <ClCompile Include="DoubleRoom.cpp" />
     <ClCompile Include="Guest.cpp" />
+    <ClCompile Include="HelperFunctions.cpp" />
+    <ClCompile Include="LuxuryRoom.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="Period.cpp" />
     <ClCompile Include="PricingStrategy.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="SingleRoom.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +147,7 @@
     <ClInclude Include="Apartment.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="ConferenceRoom.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="DoubleRoom.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="HelperFunctions.h" />

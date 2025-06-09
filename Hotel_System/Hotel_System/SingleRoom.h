@@ -3,7 +3,8 @@
 
 class SingleRoom : public Room {
 public:
-	void serialize() override;
-	void deserialize()  override;
-	MyString getType() override;
-};
+
+	SingleRoom() = default;
+	SingleRoom(Status status, double initialPrice);
+	MyString getType()const  override;
+}; 

@@ -1,12 +1,10 @@
 #pragma once
 #include "Room.h"
 
-class Appartment : Room {
+class Apartment : public Room {
 public:
 
-	void serialize() override;
-	void deserialize() override;
-	MyString getType() override;
+	MyString getType()const override;
 
 private:
 

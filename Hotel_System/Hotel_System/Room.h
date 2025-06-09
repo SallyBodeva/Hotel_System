@@ -1,7 +1,15 @@
 #pragma once
+#include "MyVector.hpp"
 #include "PricingStrategy.h"
 #include "MyString.h"
 #include "Period.h"
+
+
+class Apartment;
+class ConferenceRoom;
+class DoubleRoom;
+class LuxuryRoom;
+class SingleRoom;
 
 enum class Status
 {
@@ -14,26 +22,38 @@ class Room {
 public:
 
 	Room() = default;
-	Room(Status status, double intitialPrice);
-	virtual ~Room();
+	Room(int peopleCapacity, Status status, double intitialPrice);
+	virtual ~Room(); 
 
 	void setStrategy(PricingStrategy* newStrategy);
 	double calculatePrice(double intialPrice);
 
-	bool getRoomAvailabilityDuringPeriod(Period period);
+	void setCalculatedPrice();
+	double getPrice() const;
 
-	MyString getStatus(); 
+	bool getRoomAvailabilityDuringPeriod(const Period& period) const;
 
-	virtual void serialize() = 0;
-	virtual void deserialize() = 0;
-	virtual MyString getType() = 0;
+	const MyString& getStatus() const;
 
-	virtual ~Room() = default;
+	int getRoomNumber() const ;
+	int getPeopleCapacity() const;
 
+	const MyVector<Period>& getPeriodsTheRoomIsNotAvailable() const;
+
+
+	void setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods);
+	bool serialize(const char* fileName) const;
+	Room* deserialize(const char* fileName);
+	virtual MyString getType() const = 0;
+	
 private:
 	int roomNumber;
+	int peopleCapacity;
 	double intialPrice;
+	double calculatedPrice;
 	Status status;
 	PricingStrategy* pricingStrategy;
 	bool isAvailable;
+
+	MyVector<Period> periodsTheRoomIsNotAvailable;
 };
