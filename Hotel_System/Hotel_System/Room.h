@@ -4,13 +4,6 @@
 #include "MyString.h"
 #include "Period.h"
 
-
-class Apartment;
-class ConferenceRoom;
-class DoubleRoom;
-class LuxuryRoom;
-class SingleRoom;
-
 enum class Status
 {
 	Available,
@@ -30,10 +23,12 @@ public:
 
 	void setCalculatedPrice();
 	double getPrice() const;
+	double getInitialPrice() const;
+
 
 	bool getRoomAvailabilityDuringPeriod(const Period& period) const;
 
-	const MyString& getStatus() const;
+	MyString getStatus() const;
 
 	int getRoomNumber() const ;
 	int getPeopleCapacity() const;

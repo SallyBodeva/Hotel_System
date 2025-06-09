@@ -1,16 +1,11 @@
 #include "Room.h"
-#include "Apartment.h"
-#include "ConferenceRoom.h"
-#include "DoubleRoom.h"
-#include "LuxuryRoom.h"
-#include "SingleRoom.h"
-
 #include <iostream>
 #include <fstream>
+#include "RoomFactory.h"
 
-Room::Room(int peopleCapacity,Status status, double intitialPrice)
+Room::Room(int peopleCapacity, Status status, double intitialPrice)
 {
-	if (peopleCapacity <=0)
+	if (peopleCapacity <= 0)
 	{
 		throw std::invalid_argument("Invalid people count");
 	}
@@ -50,6 +45,11 @@ double Room::getPrice() const
 	return this->calculatedPrice;
 }
 
+double Room::getInitialPrice() const
+{
+	return this->intialPrice;
+}
+
 bool Room::getRoomAvailabilityDuringPeriod(const Period& period)const
 {
 	int vectorSize = periodsTheRoomIsNotAvailable.getSize();
@@ -65,7 +65,7 @@ bool Room::getRoomAvailabilityDuringPeriod(const Period& period)const
 }
 
 
-const MyString& Room::getStatus() const
+MyString Room::getStatus() const
 {
 	switch (status) {
 	case Status::Available:
@@ -134,6 +134,9 @@ bool Room::serialize(const char* fileName) const
 	int capacity = this->getPeopleCapacity();
 	file.write((const char*)&capacity, sizeof(capacity));
 
+	double intiialPrice = this->getInitialPrice();
+	file.write((const char*)&intiialPrice, sizeof(intiialPrice));
+
 	double price = this->getPrice();
 	file.write((const char*)&price, sizeof(price));
 
@@ -150,7 +153,7 @@ bool Room::serialize(const char* fileName) const
 	return true;
 }
 
-Room* Room::deserialize(const char* fileName) 
+Room* Room::deserialize(const char* fileName)
 {
 	if (fileName == nullptr)
 	{
@@ -184,19 +187,19 @@ Room* Room::deserialize(const char* fileName)
 	delete[] statusBuffer;
 
 	Status status;
-	if (statusStr == "Available") 
+	if (statusStr == "Available")
 	{
 		status = Status::Available;
 	}
-	else if (statusStr == "Reserved") 
+	else if (statusStr == "Reserved")
 	{
 		status = Status::Reserved;
 	}
-	else if (statusStr == "UnderRenovation") 
+	else if (statusStr == "UnderRenovation")
 	{
 		status = Status::UnderRenovation;
 	}
-	else 
+	else
 	{
 		return nullptr;
 	}
@@ -216,42 +219,17 @@ Room* Room::deserialize(const char* fileName)
 	MyVector<Period> periods;
 	for (int i = 0; i < count; ++i) {
 		Period p;
-		p.deserialize(file); 
+		p.deserialize(file);
 		periods.push_back(p);
 	}
 
-	Room* room = nullptr;
+	Room* room = RoomFactory::createRoomByType(type);
 
-	if (type == "Apartment")
+	if (!room)
 	{
-		room = new Apartment();
-	}
-	else if (type == "Conference Room")
-	{
-		room = new ConferenceRoom();
-	}
-	else if (type == "Double Room")
-	{
-		room = new DoubleRoom();
-	}
-	else if (type == "Luxury Room")
-	{
-		room = new LuxuryRoom();
-	}
-	else  if (type == "Single Room")
-	{
-		room = new SingleRoom();
-	}
-	else
-	{
-		std::cerr << "Invalid room type";
 		return nullptr;
 	}
-
-	if (room)
-	{
-		room->setDeserializedData(roomNumber, capacity, status, initialPrice, calculatedPrice, periods);
-	}
+	room->setDeserializedData(roomNumber, capacity, status, initialPrice, calculatedPrice, periods);
 
 	return room;
 

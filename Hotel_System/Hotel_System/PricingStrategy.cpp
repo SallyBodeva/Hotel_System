@@ -2,15 +2,15 @@
 
 double DemandPricing::calculatePrice(double initialPrice) const
 {
-    return 0.0;
+    return initialPrice * 1.20;
 }
 
 double SeasonPricing::calculatePrice(double initialPrice) const
 {
-    return 0.0;
+    return initialPrice * 0.90;
 }
 
 double WeekendPricing::calculatePrice(double initialPrice) const
 {
-    return 0.0;
+    return initialPrice + 15.0;
 }
