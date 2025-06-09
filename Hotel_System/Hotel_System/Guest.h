@@ -16,6 +16,9 @@ public:
 
 	Guest();
 	void setClasification();
+	void addNewReservation(Reservation* newReservation);
+
+	int getAllReservationsCount()const;
 
 private:
 	MyString clientNumber;
