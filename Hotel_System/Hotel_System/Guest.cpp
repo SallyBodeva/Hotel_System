@@ -6,6 +6,15 @@ Guest::Guest()
 {
 }
 
+Guest::Guest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email)
+{
+	this->firtsName = firstName;
+	this->lastName = lastName;
+	this->phoneNumber = phoneNumber;
+	this->email = email;
+	this->classifiication = Classification::Regular;
+}
+
 void Guest::setClasification()
 {
 	int reservationsCount = getAllReservationsCount();
