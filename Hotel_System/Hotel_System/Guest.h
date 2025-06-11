@@ -22,6 +22,7 @@ public:
 	int getAllReservationsCount()const;
 
 private:
+
 	MyString clientNumber;
 	MyString firtsName;
 	MyString lastName;
@@ -30,5 +31,6 @@ private:
 	Classification classifiication;
 
 
-	MyVector <Reservation*> previousReservations;
+	MyVector <Reservation> previousReservations;
+
 };

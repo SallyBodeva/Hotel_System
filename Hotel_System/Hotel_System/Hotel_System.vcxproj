@@ -138,6 +138,8 @@
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="PricingStrategy.cpp" />
+    <ClCompile Include="Reservation.cpp" />
+    <ClCompile Include="ReservationManager.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomFactory.cpp" />
     <ClCompile Include="SingleRoom.cpp" />
@@ -160,6 +162,7 @@
     <ClInclude Include="PricingStrategy.h" />
     <ClInclude Include="Receptionist.h" />
     <ClInclude Include="Reservation.h" />
+    <ClInclude Include="ReservationManager.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomFactory.h" />
     <ClInclude Include="SingleRoom.h" />

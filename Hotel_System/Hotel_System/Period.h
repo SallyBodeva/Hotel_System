@@ -7,25 +7,11 @@ struct Date
     int month;
     int day;
 
-    bool operator<(const Date& other) const {
-        if (year != other.year)
-        {
-            return year < other.year;
-        }
-        if (month != other.month)
-        {
-            return month < other.month;
-        }
-        return day < other.day;
-    }
+    bool operator<(const Date& other) const;
 
-    bool operator==(const Date& other) const {
-        if (year == other.year && this->month == other.month && this->day == other.day)
-        {
-            return true;
-        }
-        return false;
-    }
+    bool operator==(const Date& other) const;
+
+    int getDaysInMonth() const;
 
    const MyString getDate() const;
 };
@@ -39,6 +25,8 @@ public:
 
     bool serialize(std::ofstream& out) const;
     bool deserialize(std::ifstream& in);
+
+    int getNightsCount() const;
 
 private:
 

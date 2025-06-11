@@ -26,7 +26,7 @@ public:
 	double getInitialPrice() const;
 
 
-	bool getRoomAvailabilityDuringPeriod(const Period& period) const;
+	bool isAvailableDuringPeriod(const Period& period) const;
 
 	MyString getStatus() const;
 
@@ -39,7 +39,10 @@ public:
 	void setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods);
 	bool serialize(const char* fileName) const;
 	Room* deserialize(const char* fileName);
+
+
 	virtual MyString getType() const = 0;
+
 	
 private:
 	int roomNumber;

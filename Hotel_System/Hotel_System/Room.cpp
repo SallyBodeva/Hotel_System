@@ -50,7 +50,7 @@ double Room::getInitialPrice() const
 	return this->intialPrice;
 }
 
-bool Room::getRoomAvailabilityDuringPeriod(const Period& period)const
+bool Room::isAvailableDuringPeriod(const Period& period)const
 {
 	int vectorSize = periodsTheRoomIsNotAvailable.getSize();
 

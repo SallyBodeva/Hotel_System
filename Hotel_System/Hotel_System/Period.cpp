@@ -44,6 +44,64 @@ bool Period::deserialize(std::ifstream& in)
 	return in.good();
 }
 
+int Period::getNightsCount()
+{
+	int nights = 0;
+	Date current = startDate;
+
+	while (current < endDate) 
+	{
+		nights++;
+		current.day++;
+
+		if (current.day > current.getDaysInMonth())
+		{
+			current.day = 1;
+			current.month++;
+			if (current.month > 12) {
+				current.month = 1;
+				current.year++;
+			}
+		}
+	}
+	return nights;
+}
+
+bool Date::operator<(const Date& other) const
+{
+	if (year != other.year)
+	{
+		return year < other.year;
+	}
+	if (month != other.month)
+	{
+		return month < other.month;
+	}
+	return day < other.day;
+}
+
+bool Date::operator==(const Date& other) const
+{
+	if (year == other.year && this->month == other.month && this->day == other.day)
+	{
+		return true;
+	}
+	return false;
+}
+
+int Date::getDaysInMonth() const
+{
+	switch (month) {
+	case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+		return 31;
+	case 4: case 6: case 9: case 11: 
+		return 30;
+	case 2: 
+		return 28;
+	default: return 0; 
+	}
+}
+
 const MyString Date::getDate() const
 {
 	MyString result;
