@@ -44,7 +44,7 @@ bool Period::deserialize(std::ifstream& in)
 	return in.good();
 }
 
-int Period::getNightsCount()
+int Period::getNightsCount() const
 {
 	int nights = 0;
 	Date current = startDate;

@@ -9,12 +9,20 @@ public:
 	Reservation();
 	Reservation(const Guest& guest, const MyVector<Guest>& guests, Room* room, const Period& period);
 
-private:
-	void setBill(int nights);
+	Room* getRoom() const;
+	const Guest& getGuest()const;
+	const Period& getPeriod()const;
+	int getId() const;
 
+private:
+	void setBill(const Period& period);
+
+	int reservationNumber;
 	Guest mainGuest;
 	MyVector<Guest> otherGuests; // валидирай броя на дадените хора и вида на стаята
 	Room* room; // динамична памет за менажиране (заради вида)
 	Period period; 
 	double bill;
+
+	static int lastReservationId;
 };

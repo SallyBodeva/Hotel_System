@@ -24,10 +24,11 @@ public:
 	void setCalculatedPrice();
 	double getPrice() const;
 	double getInitialPrice() const;
-
+	void setFree();
 
 	bool isAvailableDuringPeriod(const Period& period) const;
-
+	void addNewPeriod(const Period& period);
+	void removePeriod(const Period& period);
 	MyString getStatus() const;
 
 	int getRoomNumber() const ;

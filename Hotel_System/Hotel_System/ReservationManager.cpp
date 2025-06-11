@@ -18,16 +18,31 @@ Reservation ReservationManager::createReservation(const Guest& guest, const MyVe
 	}
 
 	Reservation r(guest, guests, room, period);
-
-	int nights = period.getNightsCount();
-
-	//r.setBill(nights);
-
+	room->addNewPeriod(period);
+	this->reservations.push_back(r);
 	return r;
-
 }
 
-bool ReservationManager::deleteReservation()
+bool ReservationManager::deleteReservation(int id)
 {
-    return false;
+	int reservationsCount = this->reservations.getSize();
+
+	if (id < 0 || id >= reservationsCount)
+	{
+		return false;
+	}
+
+	for (size_t i = 0; i < reservationsCount; i++)
+	{
+		if (reservations[i].getId() == id)
+		{
+			reservations[i].getRoom()->setFree();
+			reservations[i].getRoom()->removePeriod(reservations[i].getPeriod());
+			reservations.removeAt(i);
+			return true;
+		}
+	}
+
+	return false;
 }
+

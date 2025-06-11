@@ -50,6 +50,11 @@ double Room::getInitialPrice() const
 	return this->intialPrice;
 }
 
+void Room::setFree()
+{
+	this->isAvailable = true;
+}
+
 bool Room::isAvailableDuringPeriod(const Period& period)const
 {
 	int vectorSize = periodsTheRoomIsNotAvailable.getSize();
@@ -62,6 +67,24 @@ bool Room::isAvailableDuringPeriod(const Period& period)const
 		}
 	}
 	return true;
+}
+
+void Room::addNewPeriod(const Period& period)
+{
+	this->periodsTheRoomIsNotAvailable.push_back(period);
+}
+
+void Room::removePeriod(const Period& period)
+{
+	int vecrorSize = periodsTheRoomIsNotAvailable.getSize();
+
+	for (int i = 0; i < vecrorSize; i++)
+	{
+		if (periodsTheRoomIsNotAvailable[i] == period )
+		{
+			periodsTheRoomIsNotAvailable.removeAt(i);
+		}
+	}
 }
 
 
