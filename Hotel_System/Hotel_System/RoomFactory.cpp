@@ -1,7 +1,8 @@
 #include "RoomFactory.h"
 #include <iostream>
 
-Room* RoomFactory::createRoomByType(const MyString& type) {
+Room* RoomFactory::createRoomByType(const MyString& type)
+{
     if (type == "Apartment") {
         return new Apartment();
     }
