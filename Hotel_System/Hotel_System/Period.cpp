@@ -1,6 +1,34 @@
 #include "Period.h"
 #include <fstream>
 
+bool operator<(const Date& lhs, const Date& rhs)
+{
+	if (lhs.year != rhs.year) 
+	{
+		return lhs.year < rhs.year;
+	}
+	if (lhs.month != rhs.month) 
+	{
+		return lhs.month < rhs.month;
+	}
+	return lhs.day < rhs.day;
+}
+
+bool operator==(const Date& lhs, const Date& rhs)
+{
+	return lhs.year == rhs.year && lhs.month == rhs.month && lhs.day == rhs.day;
+}
+
+bool operator<=(const Date& lhs, const Date& rhs)
+{
+	return lhs < rhs || lhs == rhs;
+}
+
+bool operator>(const Date& lhs, const Date& rhs)
+{
+	return !(lhs <= rhs);
+}
+
 bool operator==(const Period& lhs, const Period& rhs)
 {
 	if (lhs.getStartdate() == rhs.getStartdate() && lhs.getEndDate() == rhs.getEndDate())
@@ -67,27 +95,22 @@ int Period::getNightsCount() const
 	return nights;
 }
 
-bool Date::operator<(const Date& other) const
+bool Period::includes(Date partivularDate) const
 {
-	if (year != other.year)
+	if (partivularDate.day >= startDate.day && partivularDate.day <= endDate.day)
 	{
-		return year < other.year;
+		if (partivularDate.month >= startDate.month && partivularDate.month <= endDate.month)
+		{
+			if (partivularDate.year == startDate.year)
+			{
+				return true;
+			}
+		}
 	}
-	if (month != other.month)
-	{
-		return month < other.month;
-	}
-	return day < other.day;
-}
 
-bool Date::operator==(const Date& other) const
-{
-	if (year == other.year && this->month == other.month && this->day == other.day)
-	{
-		return true;
-	}
 	return false;
 }
+
 
 int Date::getDaysInMonth() const
 {

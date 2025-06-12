@@ -12,6 +12,8 @@ public:
 	Reservation createReservation(const Guest& guest, const MyVector<Guest>& guests,  Room* room, const Period& period);
 	bool deleteReservation(int id);
 
+	const MyVector<Reservation>& getAllReservations() const ;
+
 private:
 	MyVector<Reservation> reservations;
 };

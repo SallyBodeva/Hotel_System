@@ -133,6 +133,7 @@
     <ClCompile Include="ConferenceRoom.cpp" />
     <ClCompile Include="DoubleRoom.cpp" />
     <ClCompile Include="Guest.cpp" />
+    <ClCompile Include="IncomeManager.cpp" />
     <ClCompile Include="LuxuryRoom.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />

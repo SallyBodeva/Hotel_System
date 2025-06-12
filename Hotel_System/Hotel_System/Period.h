@@ -7,14 +7,15 @@ struct Date
     int month;
     int day;
 
-    bool operator<(const Date& other) const;
-
-    bool operator==(const Date& other) const;
-
     int getDaysInMonth() const;
 
    const MyString getDate() const;
 };
+
+bool operator<(const Date& lhs, const Date& rhs);
+bool operator==(const Date& lhs, const Date& rhs);
+bool operator<=(const Date& lhs, const Date& rhs);
+bool operator>(const Date& lhs, const Date& rhs);
 
 class Period {
 public:
@@ -27,6 +28,7 @@ public:
     bool deserialize(std::ifstream& in);
 
     int getNightsCount() const;
+    bool includes(Date partivularDate) const;
 
 private:
 

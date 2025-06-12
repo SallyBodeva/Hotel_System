@@ -46,3 +46,8 @@ bool ReservationManager::deleteReservation(int id)
 	return false;
 }
 
+const MyVector<Reservation>& ReservationManager::getAllReservations() const
+{
+	return this->reservations;
+}
+

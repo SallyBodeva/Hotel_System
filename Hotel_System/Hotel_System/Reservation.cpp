@@ -33,6 +33,11 @@ int Reservation::getId() const
 	return this->reservationNumber;
 }
 
+double Reservation::getBill() const
+{
+	return this->bill;
+}
+
 void Reservation::setBill(const Period& period)
 {
 	int nights = period.getNightsCount();
