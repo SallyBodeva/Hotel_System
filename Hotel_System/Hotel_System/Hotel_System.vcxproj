@@ -133,7 +133,6 @@
     <ClCompile Include="ConferenceRoom.cpp" />
     <ClCompile Include="DoubleRoom.cpp" />
     <ClCompile Include="Guest.cpp" />
-    <ClCompile Include="HelperFunctions.cpp" />
     <ClCompile Include="LuxuryRoom.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -158,7 +157,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="DoubleRoom.h" />
     <ClInclude Include="Guest.h" />
-    <ClInclude Include="HelperFunctions.h" />
+    <ClInclude Include="IncomeManager.h" />
     <ClInclude Include="LuxuryRoom.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="MyString.h" />
