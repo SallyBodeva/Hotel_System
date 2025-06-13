@@ -1,9 +1,10 @@
 #include "SingleRoom.h"
+#include "Constants.h"
 #include <iostream>
 #include <fstream>
 
 
-SingleRoom::SingleRoom(Status status, double initialPrice) : Room(1,status,initialPrice)
+SingleRoom::SingleRoom() : Room(PEOPLE_CAPACITY_SINGLE_ROOM,INITIAL_PRICE_SINGLE_ROOM)
 {
 
 }

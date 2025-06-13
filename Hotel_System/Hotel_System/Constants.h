@@ -1,4 +1,13 @@
 #pragma once
+#include "MyString.h"
+
+const MyString APARTMENT_TYPE = "Apartment";
+const MyString CONFERENCE_TYPE = "Conference Room";
+const MyString DOUBLE_TYPE = "Double Room";
+const MyString LUXURY_TYPE = "Luxury Room";
+const MyString SINGLE_TYPE = "Single Room";
+
+const int MONTH_COUNT = 12;
 
 const int MAX_ARRAY_SIZE = 1024;
 const char ROOMS_FILE_NAME[MAX_ARRAY_SIZE] = "rooms.dat";
@@ -9,12 +18,14 @@ const int MIN_RESERVATIONS_FOR_BEIGN_PLATINUM = 20;
 const int PEOPLE_CAPACITY_APARTMENT = 4;
 const int INITIAL_PRICE_APARTMENT = 120;
 
+const int PEOPLE_CAPACITY_SINGLE_ROOM = 1;
+const int INITIAL_PRICE_SINGLE_ROOM = 50;
+
 const int PEOPLE_CAPACITY_DOUBLE_ROOM = 2;
 const int INITIAL_PRICE_DOUBLE_ROOM = 70;
 
 const int PEOPLE_CAPACITY_CONFERENCE_ROOM = 50;
 const int INITIAL_PRICE_CONFERENCE_ROOM = 2000;
-
 
 const int PEOPLE_CAPACITY_LUXURY_ROOM = 2;
 const int INITIAL_PRICE_LUXURY_ROOM = 140;
