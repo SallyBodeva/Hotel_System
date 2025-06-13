@@ -9,7 +9,7 @@ public:
 	bool registerUser(const MyString& username, const MyString& password, Role role);
 	void login(const MyString& username, const MyString& password);
 
-	const MyVector<ActionLog>& getLogs() const;
+	//const MyVector<ActionLog>& getLogs() const;
 	void printHistory();
 
 private:

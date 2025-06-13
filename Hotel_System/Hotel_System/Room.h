@@ -15,7 +15,7 @@ class Room {
 public:
 
 	Room() = default;
-	Room(int peopleCapacity, Status status, double intitialPrice);
+	Room(int peopleCapacity, double intitialPrice);
 	virtual ~Room(); 
 
 	void setStrategy(PricingStrategy* newStrategy);
@@ -25,6 +25,7 @@ public:
 	double getPrice() const;
 	double getInitialPrice() const;
 	void setFree();
+	void setStatus(const Status& status);
 
 	bool isAvailableDuringPeriod(const Period& period) const;
 	void addNewPeriod(const Period& period);

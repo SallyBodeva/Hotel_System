@@ -58,10 +58,10 @@ void UserManager::login(const MyString& username, const MyString& password)
 
 // Довърши историите 
 
-const MyVector<ActionLog>& UserManager::getLogs() const
-{
-	// TODO: insert return statement here
-}
+//const MyVector<ActionLog>& UserManager::getLogs() const
+//{
+//	// TODO: insert return statement here
+//}
 
 void UserManager::printHistory()
 {

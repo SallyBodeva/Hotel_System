@@ -33,14 +33,10 @@ void Guest::setClasification()
 	}
 }
 
-void Guest::addNewReservation(Reservation* newReservation)
+void Guest::addNewReservation(Reservation newReservation)
 {
-	if (newReservation != nullptr) 
-	{
 		previousReservations.push_back(newReservation);
 		setClasification();
-	}
-
 }
 
 int Guest::getAllReservationsCount() const

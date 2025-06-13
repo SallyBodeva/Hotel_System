@@ -23,7 +23,7 @@ private:
 
     Room* bestRoom;
     Period bestPeriod;
-    const ReservationManager& reservationManager;
+    ReservationManager reservationManager;
 
 public:
     IncomeManager(const ReservationManager& resManager);

@@ -3,5 +3,6 @@
 
 class DoubleRoom : public Room {
 public:
+	DoubleRoom();
 	MyString getType()const override;
 };

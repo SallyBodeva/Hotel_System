@@ -6,7 +6,7 @@
 
 class Reservation {
 public:
-	Reservation();
+	Reservation() = default ;
 	Reservation(const Guest& guest, const MyVector<Guest>& guests, Room* room, const Period& period);
 
 	Room* getRoom() const;

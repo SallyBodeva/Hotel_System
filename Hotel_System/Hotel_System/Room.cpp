@@ -3,7 +3,7 @@
 #include <fstream>
 #include "RoomFactory.h"
 
-Room::Room(int peopleCapacity, Status status, double intitialPrice)
+Room::Room(int peopleCapacity, double intitialPrice)
 {
 	if (peopleCapacity <= 0)
 	{
@@ -13,7 +13,7 @@ Room::Room(int peopleCapacity, Status status, double intitialPrice)
 	{
 		throw std::invalid_argument("Invalid intial price");
 	}
-
+	this->status = Status::Available;
 	this->peopleCapacity = peopleCapacity;
 	this->status = status;
 	this->intialPrice = intitialPrice;
@@ -52,7 +52,13 @@ double Room::getInitialPrice() const
 
 void Room::setFree()
 {
+	this->status = Status::Available;
 	this->isAvailable = true;
+}
+
+void Room::setStatus(const Status& status)
+{
+	this->status = status;
 }
 
 bool Room::isAvailableDuringPeriod(const Period& period)const

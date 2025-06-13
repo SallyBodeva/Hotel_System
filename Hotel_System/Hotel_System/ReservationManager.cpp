@@ -18,6 +18,7 @@ Reservation ReservationManager::createReservation(const Guest& guest, const MyVe
 	}
 
 	Reservation r(guest, guests, room, period);
+	room->setStatus(Status::Reserved);
 	room->addNewPeriod(period);
 	this->reservations.push_back(r);
 	return r;

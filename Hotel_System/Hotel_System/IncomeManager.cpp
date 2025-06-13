@@ -1,6 +1,6 @@
 #include "IncomeManager.h"
 
-IncomeManager::IncomeManager(const ReservationManager& resManager)
+IncomeManager::IncomeManager(const ReservationManager& resManager) : reservationManager(resManager)
 {
 }
 
