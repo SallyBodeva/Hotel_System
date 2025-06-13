@@ -2,9 +2,6 @@
 #include "Reservation.h"
 #include "Constants.h"
 
-Guest::Guest()
-{
-}
 
 Guest::Guest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email)
 {
@@ -36,7 +33,7 @@ void Guest::setClasification()
 	}
 }
 
-void Guest::addNewReservation(Reservation newReservation)
+void Guest::addNewReservation(Reservation* newReservation)
 {
 		previousReservations.push_back(newReservation);
 		setClasification();
@@ -52,7 +49,7 @@ const MyString& Guest::getClientNumber() const
 	return this->clientNumber;
 }
 
-const MyVector<Reservation>& Guest::getHistiry() const
+const MyVector<Reservation*>& Guest::getHistiry() const
 {
 	return this->previousReservations;
 }

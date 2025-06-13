@@ -5,7 +5,7 @@ void GuestManager::addGuest(const Guest& guest)
 	this->guests.push_back(guest);
 }
 
-const MyVector<Reservation>& GuestManager::getGuestHistory(const MyString& clientNumber) const
+const MyVector<Reservation*>& GuestManager::getGuestHistory(const MyString& clientNumber) const
 {
 	int guestsCount = guests.getSize();
 

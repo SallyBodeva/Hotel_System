@@ -6,6 +6,11 @@ public:
     virtual double calculatePrice(double initialPrice) const = 0;
 };
 
+class BasicPricing : public PricingStrategy {
+
+    double calculatePrice(double initialPrice) const override;
+};
+
 class DemandPricing : public PricingStrategy {
 
     double calculatePrice(double initialPrice) const override;

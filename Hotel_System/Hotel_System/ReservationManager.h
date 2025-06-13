@@ -2,7 +2,7 @@
 #include "MyVector.hpp"
 #include "Reservation.h"
 #include "Room.h"
-#include "Guest.h";
+#include "Guest.h"
 #include "Period.h"
 
 

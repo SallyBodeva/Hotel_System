@@ -1,4 +1,5 @@
 #include "Reservation.h"
+#include "Room.h"
 
 int Reservation::lastReservationId = 1;
 
@@ -40,11 +41,20 @@ double Reservation::getBill() const
 
 double Reservation::getDailyBill() const
 {
+	if (room == nullptr)
+	{
+		throw std::runtime_error("Room is nullptr...");
+	}
 	return this->room->getPrice();
 }
 
 void Reservation::setBill(const Period& period)
 {
+	if (room == nullptr)
+	{
+		throw std::runtime_error("Room is nullptr...");
+	}
+
 	int nights = period.getNightsCount();
 	this->bill = nights * room->getPrice();
 

@@ -14,15 +14,15 @@ enum class Classification
 class Guest {
 public:
 
-	Guest();
+	Guest() = default;
 	Guest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email);
 	void setClasification();
-	void addNewReservation(Reservation newReservation);
+	void addNewReservation(Reservation* newReservation);
 
 	int getAllReservationsCount()const;
 
 	const MyString& getClientNumber() const;
-	const MyVector<Reservation>& getHistiry() const;
+	const MyVector<Reservation*>& getHistiry() const;
 
 	int getDiscount() const;
 
@@ -37,7 +37,7 @@ private:
 
 	int discoutPercent;
 
-	MyVector <Reservation> previousReservations;
+	MyVector <Reservation*> previousReservations;
 
 };
 

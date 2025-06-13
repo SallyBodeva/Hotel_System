@@ -20,6 +20,7 @@ bool operator>(const Date& lhs, const Date& rhs);
 class Period {
 public:
 
+    Period() = default;
     MyString getPeriod();
     const Date getStartdate() const;
     const Date getEndDate() const ;

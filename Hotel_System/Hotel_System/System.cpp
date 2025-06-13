@@ -1,4 +1,5 @@
 #include "System.h"
+#include <sstream>
 
 void System::run()
 {
@@ -10,11 +11,14 @@ void System::displayMenu() const
     std::cout << "--- HOTEL MANAGEMENT SYSTEM MENU ---" << std::endl;
     std::cout << "------------------------------------" << std::endl;
 
-    if (!isLoggedIn) { // Ако потребителят не е влязъл
+    if (!isLoggedIn) 
+    { 
         std::cout << "1. Log In" << std::endl;
         std::cout << "0. Exit System" << std::endl;
     }
-    else { // Ако потребителят е влязъл
+
+    else 
+    { 
         std::cout << "Logged in as: " << currentUser->getUsername() << " (" << currentUser->getRoleAsSTr() << ")" << std::endl;
 
         std::cout << "------------------------------------" << std::endl;

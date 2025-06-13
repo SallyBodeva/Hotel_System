@@ -1,8 +1,8 @@
 #pragma once
-#include "Room.h"
-#include "Guest.h";
+#include "Guest.h"
 #include "Period.h"
 
+class Room;
 
 class Reservation {
 public:

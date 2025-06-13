@@ -3,6 +3,10 @@
 #include <fstream>
 #include "RoomFactory.h"
 
+Room::Room() : pricingStrategy(nullptr), roomNumber(0), peopleCapacity(0), intialPrice(0.0), calculatedPrice(0.0), status(Status::Available), isAvailable(true)
+{
+}
+
 Room::Room(int peopleCapacity, double intitialPrice)
 {
 	if (peopleCapacity <= 0)
@@ -26,6 +30,10 @@ Room::~Room()
 
 void Room::setStrategy(PricingStrategy* newStrategy)
 {
+	if (newStrategy == nullptr)
+	{
+		throw std::runtime_error("Strategy is nullpr...");
+	}
 	delete pricingStrategy;
 	this->pricingStrategy = newStrategy;
 }

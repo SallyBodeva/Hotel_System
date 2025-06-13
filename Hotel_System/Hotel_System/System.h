@@ -19,7 +19,7 @@ public:
     ~System() = default;
 
     void run(); 
-
+    void executeCommand(const MyString& command, const MyVector<MyString>& arguments);
     //void loadData();
     //void saveData();
 
@@ -27,11 +27,11 @@ private:
 
     void displayMenu() const;
 
-    //UserManager userManager;
-    //RoomManager roomManager;
-    ReservationManager reservationManager; // тук имя грешка
-    //IncomeManager incomeManager;
-    //GuestManager guestManager;
+    UserManager userManager;
+    RoomManager roomManager;
+    ReservationManager reservationManager; 
+    IncomeManager incomeManager;
+    GuestManager guestManager;
 
     User* currentUser = nullptr;
     bool isLoggedIn = false;

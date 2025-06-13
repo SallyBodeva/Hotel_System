@@ -14,8 +14,13 @@ enum class Status
 class Room {
 public:
 
-	Room() = default;
+	Room();
 	Room(int peopleCapacity, double intitialPrice);
+
+	Room(const Room&) = delete;
+	Room& operator=(const Room&) = delete;
+
+
 	virtual ~Room(); 
 
 	void setStrategy(PricingStrategy* newStrategy);
