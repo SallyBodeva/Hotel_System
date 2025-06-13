@@ -38,6 +38,11 @@ double Reservation::getBill() const
 	return this->bill;
 }
 
+double Reservation::getDailyBill() const
+{
+	return this->room->getPrice();
+}
+
 void Reservation::setBill(const Period& period)
 {
 	int nights = period.getNightsCount();

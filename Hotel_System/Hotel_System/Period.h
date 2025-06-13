@@ -30,6 +30,9 @@ public:
     int getNightsCount() const;
     bool includes(Date partivularDate) const;
 
+    int getDaysInMonth(int month, int year)const;
+    int getDaysInYear(int year)const;
+
 private:
 
     Date startDate;

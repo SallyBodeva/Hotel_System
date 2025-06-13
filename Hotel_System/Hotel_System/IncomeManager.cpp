@@ -15,7 +15,7 @@ double IncomeManager::getIncomeForDay(const Date& date) const
     {
         if (reservations[i].getPeriod().includes(date))
         {
-            income += reservations[i].getBill();
+            income += reservations[i].getDailyBill();
         }
     }
     return income;
@@ -23,12 +23,36 @@ double IncomeManager::getIncomeForDay(const Date& date) const
 
 double IncomeManager::getIncomeForMonth(int month, int year) const
 {
-    return 0.0;
+    const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
+
+    int count = reservations.getSize();
+
+    double income = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+         int days = reservations[i].getPeriod().getDaysInMonth(month, year);
+         income += days * reservations[i].getDailyBill();
+    }
+
+    return income;
 }
 
 double IncomeManager::getIncomeForYear(int year) const
 {
-    return 0.0;
+    const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
+
+    int count = reservations.getSize();
+
+    double income = 0;
+
+    for (int i = 0; i < count; i++)
+    {
+        int days = reservations[i].getPeriod().getDaysInYear(year);
+        income += days * reservations[i].getDailyBill();
+    }
+
+    return income;
 }
 
 double IncomeManager::getIncomeByRoomType(Room* room) const

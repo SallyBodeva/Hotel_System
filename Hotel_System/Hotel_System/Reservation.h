@@ -14,6 +14,7 @@ public:
 	const Period& getPeriod()const;
 	int getId() const;
 	double getBill() const;
+	double getDailyBill() const;
 
 private:
 	void setBill(const Period& period);

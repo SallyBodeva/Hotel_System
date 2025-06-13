@@ -6,6 +6,25 @@
 
 
 class IncomeManager {
+private:
+
+    struct IncomeByRoom
+    {
+        MyString roomType;
+        double income;
+    };
+
+    struct IncomeByReservationsCount
+    {
+        int reservationsCount;
+        double income;
+        double averageIncome;
+    };
+
+    Room* bestRoom;
+    Period bestPeriod;
+    const ReservationManager& reservationManager;
+
 public:
     IncomeManager(const ReservationManager& resManager);
 
@@ -16,7 +35,5 @@ public:
 
     void exportReportToFile(const MyString& fileName) const;
 
-private:
-    const ReservationManager& reservationManager;
 
 };

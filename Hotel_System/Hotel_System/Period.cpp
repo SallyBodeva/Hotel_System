@@ -111,6 +111,62 @@ bool Period::includes(Date partivularDate) const
 	return false;
 }
 
+int Period::getDaysInMonth(int month, int year) const
+{
+	int days = 0;
+	Date currentdate = startDate;
+
+	while (currentdate < endDate)
+	{
+		if (currentdate.month == month && currentdate.year == year)
+		{
+			days++;
+			break;
+		}
+		currentdate.day++;
+
+		if (currentdate.day > currentdate.getDaysInMonth())
+		{
+			currentdate.day = 1;
+			currentdate.month++;
+
+			if (currentdate.month > 12) {
+				currentdate.month = 1;
+				currentdate.year++;
+			}
+		}
+	}
+	return days;
+}
+
+int Period::getDaysInYear(int year) const
+{
+	int days = 0;
+	Date currentdate = startDate;
+
+	while (currentdate < endDate)
+	{
+		if (currentdate.year == year)
+		{
+			days++;
+			break;
+		}
+		currentdate.day++;
+
+		if (currentdate.day > currentdate.getDaysInMonth())
+		{
+			currentdate.day = 1;
+			currentdate.month++;
+
+			if (currentdate.month > 12) {
+				currentdate.month = 1;
+				currentdate.year++;
+			}
+		}
+	}
+	return days;
+}
+
 
 int Date::getDaysInMonth() const
 {
