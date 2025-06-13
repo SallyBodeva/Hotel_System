@@ -123,143 +123,143 @@ const MyVector<Period>& Room::getPeriodsTheRoomIsNotAvailable() const
 	return this->periodsTheRoomIsNotAvailable;
 }
 
-void Room::setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods) {
-	this->roomNumber = roomNum;
-	this->peopleCapacity = capacity;
-	this->status = stat;
-	this->intialPrice = initialP;
-	this->calculatedPrice = calcP;
-	this->periodsTheRoomIsNotAvailable = periods;
-}
-
-bool Room::serialize(const char* fileName) const
-{
-	if (fileName == nullptr)
-	{
-		return false;
-	}
-
-	std::ofstream file(fileName, std::ios::binary, std::ios::app);
-
-	if (!file.is_open())
-	{
-		return false;
-	}
-
-	MyString type = this->getType();
-	int lenType = type.getSize();
-	file.write(reinterpret_cast<const char*>(&lenType), sizeof(lenType));
-	file.write(type.c_str(), lenType);
-
-	int roomNumber = getRoomNumber();
-
-	file.write(reinterpret_cast<const char*>(&roomNumber), sizeof(roomNumber));
-
-	MyString status = this->getStatus();
-	int lenStatus = status.getSize();
-	file.write(reinterpret_cast<const char*>(&lenStatus), sizeof(lenStatus));
-	file.write(status.c_str(), lenStatus);
-
-	int capacity = this->getPeopleCapacity();
-	file.write((const char*)&capacity, sizeof(capacity));
-
-	double intiialPrice = this->getInitialPrice();
-	file.write((const char*)&intiialPrice, sizeof(intiialPrice));
-
-	double price = this->getPrice();
-	file.write((const char*)&price, sizeof(price));
-
-	int count = this->getPeriodsTheRoomIsNotAvailable().getSize();
-	file.write((const char*)&count, sizeof(count));
-
-	for (size_t i = 0; i < count; ++i)
-	{
-		Period p = this->getPeriodsTheRoomIsNotAvailable()[i];
-		p.serialize(file);
-	}
-
-	file.close();
-	return true;
-}
-
-Room* Room::deserialize(const char* fileName)
-{
-	if (fileName == nullptr)
-	{
-		return nullptr;
-	}
-
-	std::ifstream file(fileName, std::ios::binary);
-
-	if (!file.is_open())
-	{
-		return nullptr;
-	}
-
-	int lenType;
-	file.read(reinterpret_cast<char*>(&lenType), sizeof(lenType));
-	char* typeBuffer = new char[lenType + 1];
-	file.read(typeBuffer, lenType);
-	typeBuffer[lenType] = '\0';
-	MyString type(typeBuffer);
-	delete[] typeBuffer;
-
-	int roomNumber;
-	file.read(reinterpret_cast<char*>(&roomNumber), sizeof(roomNumber));
-
-	int lenStatus;
-	file.read(reinterpret_cast<char*>(&lenStatus), sizeof(lenStatus));
-	char* statusBuffer = new char[lenStatus + 1];
-	file.read(statusBuffer, lenStatus);
-	statusBuffer[lenStatus] = '\0';
-	MyString statusStr(statusBuffer);
-	delete[] statusBuffer;
-
-	Status status;
-	if (statusStr == "Available")
-	{
-		status = Status::Available;
-	}
-	else if (statusStr == "Reserved")
-	{
-		status = Status::Reserved;
-	}
-	else if (statusStr == "UnderRenovation")
-	{
-		status = Status::UnderRenovation;
-	}
-	else
-	{
-		return nullptr;
-	}
-
-	int capacity;
-	file.read(reinterpret_cast<char*>(&capacity), sizeof(capacity));
-
-	double initialPrice;
-	file.read(reinterpret_cast<char*>(&initialPrice), sizeof(initialPrice));
-
-	double calculatedPrice;
-	file.read(reinterpret_cast<char*>(&calculatedPrice), sizeof(calculatedPrice));
-
-	int count;
-	file.read(reinterpret_cast<char*>(&count), sizeof(count));
-
-	MyVector<Period> periods;
-	for (int i = 0; i < count; ++i) {
-		Period p;
-		p.deserialize(file);
-		periods.push_back(p);
-	}
-
-	Room* room = RoomFactory::createRoomByType(type);
-
-	if (!room)
-	{
-		return nullptr;
-	}
-	room->setDeserializedData(roomNumber, capacity, status, initialPrice, calculatedPrice, periods);
-
-	return room;
-
-}
+//void Room::setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods) {
+//	this->roomNumber = roomNum;
+//	this->peopleCapacity = capacity;
+//	this->status = stat;
+//	this->intialPrice = initialP;
+//	this->calculatedPrice = calcP;
+//	this->periodsTheRoomIsNotAvailable = periods;
+//}
+//
+//bool Room::serialize(const char* fileName) const
+//{
+//	if (fileName == nullptr)
+//	{
+//		return false;
+//	}
+//
+//	std::ofstream file(fileName, std::ios::binary, std::ios::app);
+//
+//	if (!file.is_open())
+//	{
+//		return false;
+//	}
+//
+//	MyString type = this->getType();
+//	int lenType = type.getSize();
+//	file.write(reinterpret_cast<const char*>(&lenType), sizeof(lenType));
+//	file.write(type.c_str(), lenType);
+//
+//	int roomNumber = getRoomNumber();
+//
+//	file.write(reinterpret_cast<const char*>(&roomNumber), sizeof(roomNumber));
+//
+//	MyString status = this->getStatus();
+//	int lenStatus = status.getSize();
+//	file.write(reinterpret_cast<const char*>(&lenStatus), sizeof(lenStatus));
+//	file.write(status.c_str(), lenStatus);
+//
+//	int capacity = this->getPeopleCapacity();
+//	file.write((const char*)&capacity, sizeof(capacity));
+//
+//	double intiialPrice = this->getInitialPrice();
+//	file.write((const char*)&intiialPrice, sizeof(intiialPrice));
+//
+//	double price = this->getPrice();
+//	file.write((const char*)&price, sizeof(price));
+//
+//	int count = this->getPeriodsTheRoomIsNotAvailable().getSize();
+//	file.write((const char*)&count, sizeof(count));
+//
+//	for (size_t i = 0; i < count; ++i)
+//	{
+//		Period p = this->getPeriodsTheRoomIsNotAvailable()[i];
+//		p.serialize(file);
+//	}
+//
+//	file.close();
+//	return true;
+//}
+//
+//Room* Room::deserialize(const char* fileName)
+//{
+//	if (fileName == nullptr)
+//	{
+//		return nullptr;
+//	}
+//
+//	std::ifstream file(fileName, std::ios::binary);
+//
+//	if (!file.is_open())
+//	{
+//		return nullptr;
+//	}
+//
+//	int lenType;
+//	file.read(reinterpret_cast<char*>(&lenType), sizeof(lenType));
+//	char* typeBuffer = new char[lenType + 1];
+//	file.read(typeBuffer, lenType);
+//	typeBuffer[lenType] = '\0';
+//	MyString type(typeBuffer);
+//	delete[] typeBuffer;
+//
+//	int roomNumber;
+//	file.read(reinterpret_cast<char*>(&roomNumber), sizeof(roomNumber));
+//
+//	int lenStatus;
+//	file.read(reinterpret_cast<char*>(&lenStatus), sizeof(lenStatus));
+//	char* statusBuffer = new char[lenStatus + 1];
+//	file.read(statusBuffer, lenStatus);
+//	statusBuffer[lenStatus] = '\0';
+//	MyString statusStr(statusBuffer);
+//	delete[] statusBuffer;
+//
+//	Status status;
+//	if (statusStr == "Available")
+//	{
+//		status = Status::Available;
+//	}
+//	else if (statusStr == "Reserved")
+//	{
+//		status = Status::Reserved;
+//	}
+//	else if (statusStr == "UnderRenovation")
+//	{
+//		status = Status::UnderRenovation;
+//	}
+//	else
+//	{
+//		return nullptr;
+//	}
+//
+//	int capacity;
+//	file.read(reinterpret_cast<char*>(&capacity), sizeof(capacity));
+//
+//	double initialPrice;
+//	file.read(reinterpret_cast<char*>(&initialPrice), sizeof(initialPrice));
+//
+//	double calculatedPrice;
+//	file.read(reinterpret_cast<char*>(&calculatedPrice), sizeof(calculatedPrice));
+//
+//	int count;
+//	file.read(reinterpret_cast<char*>(&count), sizeof(count));
+//
+//	MyVector<Period> periods;
+//	for (int i = 0; i < count; ++i) {
+//		Period p;
+//		p.deserialize(file);
+//		periods.push_back(p);
+//	}
+//
+//	Room* room = RoomFactory::createRoomByType(type);
+//
+//	if (!room)
+//	{
+//		return nullptr;
+//	}
+//	room->setDeserializedData(roomNumber, capacity, status, initialPrice, calculatedPrice, periods);
+//
+//	return room;
+//
+//}

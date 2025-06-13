@@ -6,6 +6,7 @@
 
 class ActionLog {
 public:
+    ActionLog() = default;
     ActionLog(const MyString& username, const MyString& action);
 
     const MyString& getUsername() const;

@@ -22,14 +22,17 @@ void Guest::setClasification()
 	if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_GOLD)
 	{
 		this->classifiication = Classification::Gold;
+		this->discoutPercent = DISCOUNT_PERCENT_FOR_GOLD;
 	}
 	else if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_PLATINUM)
 	{
 		this->classifiication = Classification::Platinum;
+		this->discoutPercent = DISCOUNT_PERCENT_FOR_PLATINUM;
 	}
 	else
 	{
 		this->classifiication = Classification::Regular;
+		this->discoutPercent = 0;
 	}
 }
 
@@ -42,4 +45,19 @@ void Guest::addNewReservation(Reservation newReservation)
 int Guest::getAllReservationsCount() const
 {
 	return this->previousReservations.getSize();
+}
+
+const MyString& Guest::getClientNumber() const
+{
+	return this->clientNumber;
+}
+
+const MyVector<Reservation>& Guest::getHistiry() const
+{
+	return this->previousReservations;
+}
+
+int Guest::getDiscount() const
+{
+	return this->discoutPercent;;
 }

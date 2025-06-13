@@ -9,3 +9,8 @@ Role Accountant::getRole()
 {
     return Role::Accountant;
 }
+
+MyString Accountant::getRoleAsSTr()
+{
+    return MyString("Accountant");
+}

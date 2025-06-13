@@ -21,6 +21,11 @@ public:
 
 	int getAllReservationsCount()const;
 
+	const MyString& getClientNumber() const;
+	const MyVector<Reservation>& getHistiry() const;
+
+	int getDiscount() const;
+
 private:
 
 	MyString clientNumber;
@@ -30,6 +35,7 @@ private:
 	MyString email;
 	Classification classifiication;
 
+	int discoutPercent;
 
 	MyVector <Reservation> previousReservations;
 

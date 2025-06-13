@@ -11,11 +11,8 @@ public:
 	Receptionist() = default;
 	Receptionist(const MyString& username, const MyString& password);
 
-	Reservation* createReservation(const Guest& mainGuest, const MyVector<Guest>& guests, const Room* const room, const Period& period);
-
-	void addReservationToGuests(MyVector<Guest>& guests);
-
-	void deleteReservation(MyVector<Guest>& guests);
-
 	Role getRole() override;
+
+	// Inherited via User
+	MyString getRoleAsSTr() override;
 };

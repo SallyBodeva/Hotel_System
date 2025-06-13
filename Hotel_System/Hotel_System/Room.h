@@ -38,11 +38,6 @@ public:
 	const MyVector<Period>& getPeriodsTheRoomIsNotAvailable() const;
 
 
-	void setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods);
-	bool serialize(const char* fileName) const;
-	Room* deserialize(const char* fileName);
-
-
 	virtual MyString getType() const = 0;
 
 	

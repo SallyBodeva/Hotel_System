@@ -5,7 +5,7 @@
 
 class UserManager {
 public:
-
+	UserManager() = default;
 	bool registerUser(const MyString& username, const MyString& password, Role role);
 	void login(const MyString& username, const MyString& password);
 

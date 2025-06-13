@@ -8,3 +8,8 @@ Role Receptionist::getRole()
 {
     return Role::Receptionist;
 }
+
+MyString Receptionist::getRoleAsSTr()
+{
+    return MyString("Receptionist");
+}

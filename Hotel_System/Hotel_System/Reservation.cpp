@@ -47,4 +47,11 @@ void Reservation::setBill(const Period& period)
 {
 	int nights = period.getNightsCount();
 	this->bill = nights * room->getPrice();
+
+	if (mainGuest.getDiscount() != 0)
+	{
+		double discountMooney = this->bill * mainGuest.getDiscount();
+		this->bill -= discountMooney;
+	}
+
 }

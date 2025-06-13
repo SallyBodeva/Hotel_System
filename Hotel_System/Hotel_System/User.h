@@ -13,6 +13,7 @@ public:
 	User() = default;
 	User(const MyString& username, const MyString& password);
 	virtual Role getRole() = 0;
+	virtual MyString getRoleAsSTr() = 0;
 	const MyString& getUsername() const;
 	const MyString& getPassword() const;
 

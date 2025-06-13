@@ -8,3 +8,8 @@ Role Manager::getRole()
 {
 	return Role::Manager;
 }
+
+MyString Manager::getRoleAsSTr()
+{
+	return MyString("Manager");
+}

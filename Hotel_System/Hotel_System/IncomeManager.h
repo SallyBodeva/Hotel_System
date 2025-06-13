@@ -24,6 +24,7 @@ private:
     MyVector<IncomeByRoom> incomesByRoom;
 
 public:
+    IncomeManager() = default;
     IncomeManager(const ReservationManager& resManager);
 
     double getIncomeForDay(const Date& date) const;
