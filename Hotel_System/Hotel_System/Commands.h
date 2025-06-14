@@ -32,13 +32,52 @@ public:
 
 };
 
-//class CreateRoom : public Command {
-//public:
-//
-//	CreateRoom() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
+class LogOut : public Command {
+public:
+
+	LogOut() = default;
+
+	void execute(System& system, const MyVector<MyString>& args) const override;
+
+};
+
+
+class AddRoom : public Command {
+public:
+
+	AddRoom() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class ChangePricingStartegy : public Command {
+public:
+
+	ChangePricingStartegy() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class ViewAvailabeRooms : public Command {
+public:
+
+	ViewAvailabeRooms() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class RegisterGuest : public Command {
+public:
+
+	RegisterGuest() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class MakeReservation : public Command {
+public:
+
+	MakeReservation() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+
 //class RegisterGuest : public Command {
 //public:
 //

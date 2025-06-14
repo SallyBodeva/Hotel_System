@@ -28,6 +28,9 @@ public:
 	MyString& operator+=(char symbol);
 	MyString toLower() const;
 
+	int toInt() const;
+	double toDouble() const;
+
 	friend std::istream& operator>>(std::istream& is, MyString& obj);
 	friend std::ostream& operator<<(std::ostream& os, const MyString& obj);
 

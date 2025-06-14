@@ -2,6 +2,7 @@
 #include "Reservation.h"
 #include "Constants.h"
 
+int Guest::previousClientNumber = 1;
 
 Guest::Guest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email)
 {
@@ -10,6 +11,7 @@ Guest::Guest(const MyString& firstName, const MyString& lastName, const MyString
 	this->phoneNumber = phoneNumber;
 	this->email = email;
 	this->classifiication = Classification::Regular;
+	this->clientNumber = previousClientNumber++;
 }
 
 void Guest::setClasification()
@@ -44,7 +46,7 @@ int Guest::getAllReservationsCount() const
 	return this->previousReservations.getSize();
 }
 
-const MyString& Guest::getClientNumber() const
+int Guest::getClientNumber() const
 {
 	return this->clientNumber;
 }

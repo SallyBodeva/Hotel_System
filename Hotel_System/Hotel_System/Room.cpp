@@ -17,10 +17,15 @@ Room::Room(int peopleCapacity, double intitialPrice)
 	{
 		throw std::invalid_argument("Invalid intial price");
 	}
+	PricingStrategy* basic = new BasicPricing();
+	this->setStrategy(basic);
 	this->status = Status::Available;
 	this->peopleCapacity = peopleCapacity;
 	this->status = status;
 	this->intialPrice = intitialPrice;
+	this->isAvailable = true;
+
+	setCalculatedPrice();
 }
 
 Room::~Room()
@@ -67,6 +72,11 @@ void Room::setFree()
 void Room::setStatus(const Status& status)
 {
 	this->status = status;
+}
+
+void Room::setRoomNumber(int roomNumber)
+{
+	this->roomNumber = roomNumber;
 }
 
 bool Room::isAvailableDuringPeriod(const Period& period)const

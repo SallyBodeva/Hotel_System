@@ -6,9 +6,11 @@
 #include "IncomeManager.h"
 #include "Manager.h"
 #include "MyVector.hpp"
+#include "RoomFactory.h"
 #include "RoomManager.h"
 #include "Receptionist.h"
 #include "ReservationManager.h"
+#include "PricingStrategyFactory.h"
 #include "User.h"
 #include "UserManager.h"
 
@@ -29,6 +31,7 @@ public:
 
     User* getCurrentUser() const;
     void setCurrentUser(User* user);
+    void logOut();
 
 
     //void loadData();
@@ -45,6 +48,5 @@ private:
     GuestManager guestManager;
 
     User* currentUser = nullptr;
-    bool isLoggedIn = false;
 
 };

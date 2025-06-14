@@ -31,6 +31,7 @@ public:
 	double getInitialPrice() const;
 	void setFree();
 	void setStatus(const Status& status);
+	void setRoomNumber(int roomNumber);
 
 	bool isAvailableDuringPeriod(const Period& period) const;
 	void addNewPeriod(const Period& period);

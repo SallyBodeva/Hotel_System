@@ -192,6 +192,59 @@ MyString MyString::toLower() const
 	return result;
 }
 
+int MyString::toInt() const 
+{
+	int result = 0;
+	int i = 0;
+	bool isNegative = false;
+
+	if (data[i] == '-')
+	{
+		isNegative = true;
+		i++;
+	}
+
+	while (data[i] >= '0' && data[i] <= '9') {
+		result = result * 10 + (data[i] - '0');
+		i++;
+	}
+
+	return isNegative ? -result : result;
+}
+
+double MyString::toDouble() const
+{
+	int i = 0;
+	
+
+	bool isNegative = false;
+	if (data[i] == '-') {
+		isNegative = true;
+		i++;
+	}
+
+	double result = 0.0;
+
+	while (data[i] >= '0' && data[i] <= '9') {
+		result = result * 10 + (data[i] - '0');
+		i++;
+	}
+
+	if (data[i] == '.' || data[i] == ',') {
+		i++;
+		double fraction = 0.0;
+		double divisor = 10.0;
+		while (data[i] >= '0' && data[i] <= '9') {
+			fraction += (data[i] - '0') / divisor;
+			divisor *= 10.0;
+			i++;
+		}
+		result += fraction;
+	}
+
+	return isNegative ? -result : result;
+}
+
 void MyString::moveFrom(MyString&& other)
 {
 	this->data = other.data;

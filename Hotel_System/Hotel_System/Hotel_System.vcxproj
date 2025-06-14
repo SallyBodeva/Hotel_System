@@ -141,6 +141,7 @@
     <ClCompile Include="MyString.cpp" />
     <ClCompile Include="Period.cpp" />
     <ClCompile Include="PricingStrategy.cpp" />
+    <ClCompile Include="PricingStrategyFactory.cpp" />
     <ClCompile Include="Receptionist.cpp" />
     <ClCompile Include="Reservation.cpp" />
     <ClCompile Include="ReservationManager.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="MyVector.hpp" />
     <ClInclude Include="Period.h" />
     <ClInclude Include="PricingStrategy.h" />
+    <ClInclude Include="PricingStrategyFactory.h" />
     <ClInclude Include="Receptionist.h" />
     <ClInclude Include="Reservation.h" />
     <ClInclude Include="ReservationManager.h" />

@@ -21,14 +21,16 @@ public:
 
 	int getAllReservationsCount()const;
 
-	const MyString& getClientNumber() const;
+
+	int getClientNumber() const;
 	const MyVector<Reservation*>& getHistiry() const;
 
 	int getDiscount() const;
 
+	static int previousClientNumber;
 private:
 
-	MyString clientNumber;
+	int clientNumber;
 	MyString firtsName;
 	MyString lastName;
 	MyString phoneNumber;

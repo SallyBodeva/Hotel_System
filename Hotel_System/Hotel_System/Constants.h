@@ -2,10 +2,15 @@
 #include "MyString.h"
 
 const MyString APARTMENT_TYPE = "Apartment";
-const MyString CONFERENCE_TYPE = "Conference Room";
-const MyString DOUBLE_TYPE = "Double Room";
-const MyString LUXURY_TYPE = "Luxury Room";
-const MyString SINGLE_TYPE = "Single Room";
+const MyString CONFERENCE_TYPE = "Conference_room";
+const MyString DOUBLE_TYPE = "Double_room";
+const MyString LUXURY_TYPE = "Luxury_room";
+const MyString SINGLE_TYPE = "Single_room";
+
+const MyString DEMAND_PRICING = "Demand";
+const MyString SEASON_PRICING = "Season";
+const MyString WEEKEND_PRICING = "Weekend";
+const MyString BASIC_PRICING = "Basic";
 
 const int MONTH_COUNT = 12;
 

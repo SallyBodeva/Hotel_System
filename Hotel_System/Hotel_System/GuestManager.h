@@ -6,8 +6,10 @@
 class GuestManager {
 public:
 	GuestManager() = default;
-	void addGuest(const Guest& guest);
-	const MyVector<Reservation*>& getGuestHistory(const MyString& clientNumber) const;
+	void addGuest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email);
+	const MyVector<Reservation*>& getGuestHistory(int clientNumber) const;
+
+	Guest getGuestByClientNumber(int number);
 
 	void saveGuestsToFile();
 	void loadGuestsFromFile();
