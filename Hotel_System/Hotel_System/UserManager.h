@@ -6,10 +6,10 @@
 class UserManager {
 public:
 	UserManager() = default;
+	void seeder();
 	bool registerUser(const MyString& username, const MyString& password, Role role);
-	void login(const MyString& username, const MyString& password);
 
-	//const MyVector<ActionLog>& getLogs() const;
+	User* getUserByUserName(const MyString& username);
 	void printHistory();
 
 private:

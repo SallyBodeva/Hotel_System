@@ -3,6 +3,13 @@
 #include "Manager.h"
 #include "Accountant.h"
 #include "Receptionist.h"
+#include "Constants.h"
+
+void UserManager::seeder()
+{
+	User* manager = new Manager(MANAGER_USERNAME, GENERAL_PASSWORD);
+	users.push_back(manager);
+}
 
 bool UserManager::registerUser(const MyString& username, const MyString& password, Role role)
 {
@@ -39,29 +46,20 @@ bool UserManager::registerUser(const MyString& username, const MyString& passwor
 	return false;
 }
 
-void UserManager::login(const MyString& username, const MyString& password)
-{
-	int usersCount = users.getSize();
 
-	User* neededUser = nullptr;
+User* UserManager::getUserByUserName(const MyString& username)
+{
+	int usersCount = 0;
 
 	for (int i = 0; i < usersCount; i++)
 	{
-		if (users[i]->getUsername() == username && users[i]->getPassword() == password)
+		if (users[i]->getUsername() == username)
 		{
-			neededUser = users[i];
+			return users[i];
 		}
 	}
-	this->loggedUser = neededUser;
+	return nullptr;
 }
-
-
-// Довърши историите 
-
-//const MyVector<ActionLog>& UserManager::getLogs() const
-//{
-//	// TODO: insert return statement here
-//}
 
 void UserManager::printHistory()
 {

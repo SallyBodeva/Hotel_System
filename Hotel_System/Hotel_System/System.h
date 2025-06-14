@@ -20,6 +20,17 @@ public:
 
     void run(); 
     void executeCommand(const MyString& command, const MyVector<MyString>& arguments);
+
+    UserManager& getUserManager();
+    RoomManager& getRoomManager();
+    ReservationManager& getReservationManager();
+    IncomeManager& getIncomeManager();
+    GuestManager& getGuestManager();
+
+    User* getCurrentUser() const;
+    void setCurrentUser(User* user);
+
+
     //void loadData();
     //void saveData();
 

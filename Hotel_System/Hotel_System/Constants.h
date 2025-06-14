@@ -33,3 +33,16 @@ const int INITIAL_PRICE_CONFERENCE_ROOM = 2000;
 const int PEOPLE_CAPACITY_LUXURY_ROOM = 2;
 const int INITIAL_PRICE_LUXURY_ROOM = 140;
 
+
+const MyString MANAGER_USERNAME = "Admin";
+
+const MyString MANAGER_AS_STR = "Manager";
+const MyString ACCOUNTANT_AS_STR = "Accountant";
+const MyString RECEPTIONIST_AS_STR = "Receptionist";
+
+
+
+//const MyString ACCOUNTANT_USERNAME = "SallyBodeva";
+//const MyString RECEPTIONIST_USERNAME = "KatrinGeorg";
+
+const MyString GENERAL_PASSWORD = "123456";
