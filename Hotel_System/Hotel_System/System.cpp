@@ -9,6 +9,7 @@ void System::run()
 
         displayMenu();
 
+
         while (true)
         {
             const int BUFFER_SIZE = 1024;

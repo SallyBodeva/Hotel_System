@@ -49,7 +49,7 @@ bool UserManager::registerUser(const MyString& username, const MyString& passwor
 
 User* UserManager::getUserByUserName(const MyString& username)
 {
-	int usersCount = 0;
+	int usersCount = this->users.getSize();
 
 	for (int i = 0; i < usersCount; i++)
 	{
