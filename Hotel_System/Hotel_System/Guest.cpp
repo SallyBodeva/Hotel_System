@@ -55,6 +55,30 @@ MyString Guest::getFullName() const
 	 return result;
 }
 
+MyString Guest::getClassificaytin() const
+{
+	MyString result;
+
+	switch (this->classifiication)
+	{
+	case Classification::Regular:
+		result = "Regular";
+		break;
+	case Classification::Gold:
+		result = "Gold";
+		break;
+	case Classification::Platinum:
+		result = "Platinum";
+		break;
+
+	default:
+		result = "Invalid";
+		break;
+	}
+
+	return result;
+}
+
 int Guest::getClientNumber() const
 {
 	return this->clientNumber;

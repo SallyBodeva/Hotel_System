@@ -3,138 +3,175 @@
 
 IncomeManager::IncomeManager(const ReservationManager& resManager) : reservationManager(resManager)
 {
-    incomesByRoom.push_back(IncomeByRoom(APARTMENT_TYPE));
-    incomesByRoom.push_back(IncomeByRoom(CONFERENCE_TYPE));
-    incomesByRoom.push_back(IncomeByRoom(DOUBLE_TYPE));
-    incomesByRoom.push_back(IncomeByRoom(LUXURY_TYPE));
-    incomesByRoom.push_back(IncomeByRoom(SINGLE_TYPE));
 
 }
 
 double IncomeManager::getIncomeForDay(const Date& date) const
 {
-    const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
-    int count = reservations.getSize();
+	const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
+	int count = this->reservationManager.getAllReservations().getSize();
 
-    double income = 0;
+	double income = 0;
 
-    for (size_t i = 0; i < count; i++)
-    {
-        if (reservations[i].getPeriod().includes(date))
-        {
-            income += reservations[i].getDailyBill();
-        }
-    }
-    return income;
+	for (size_t i = 0; i < count; i++)
+	{
+		if (reservations[i].getPeriod().includes(date))
+		{
+			income += reservations[i].getDailyBill();
+		}
+	}
+	return income;
 }
 
 double IncomeManager::getIncomeForMonth(int month, int year) const
 {
-    const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
+	const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
 
-    int count = reservations.getSize();
+	int count = reservations.getSize();
 
-    double income = 0;
+	double income = 0;
 
-    for (int i = 0; i < count; i++)
-    {
-         int days = reservations[i].getPeriod().getDaysInMonth(month, year);
-         income += days * reservations[i].getDailyBill();
-    }
+	for (int i = 0; i < count; i++)
+	{
+		int days = reservations[i].getPeriod().getDaysInMonth(month, year);
+		income += days * reservations[i].getDailyBill();
+	}
 
-    return income;
+	return income;
 }
 
 double IncomeManager::getIncomeForYear(int year) const
 {
-    const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
+	const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
 
-    int count = reservations.getSize();
+	int count = reservations.getSize();
 
-    double income = 0;
+	double income = 0;
 
-    for (int i = 0; i < count; i++)
-    {
-        int days = reservations[i].getPeriod().getDaysInYear(year);
-        income += days * reservations[i].getDailyBill();
-    }
+	for (int i = 0; i < count; i++)
+	{
+		int days = reservations[i].getPeriod().getDaysInYear(year);
+		income += days * reservations[i].getDailyBill();
+	}
 
-    return income;
+	return income;
 }
 
 MyString IncomeManager::analyseBestRoom()
 {
-    MyString bestType;
-    double maxIncome = 0;
+	const MyVector<Reservation>& reservations = this->reservationManager.getAllReservations();
 
-    int incomesByRoomCount = this->incomesByRoom.getSize();
-    for (int i = 0; i < incomesByRoomCount; i++)
-    {
-        if (incomesByRoom[i].income > maxIncome)
-        {
-            maxIncome = incomesByRoom[i].income;
-            bestType = incomesByRoom[i].roomType;
-        }
-    }
+	int count = reservations.getSize();
 
-    return bestType;
+	if (count == 0)
+	{
+		MyString result("Do not have any rooms");
+		return result;
+	}
+
+	MyString result;
+	double max = 0;
+
+	double apartmentIncome = calculateIncomeByRoomType(APARTMENT_TYPE);
+	double conferenceRoomIncome = calculateIncomeByRoomType(CONFERENCE_TYPE);
+	double doubleRoomIncome = calculateIncomeByRoomType(DOUBLE_TYPE);
+	double luxuryRoomIncome = calculateIncomeByRoomType(LUXURY_TYPE);
+	double singleRoomType = calculateIncomeByRoomType(SINGLE_TYPE);
+
+	if (apartmentIncome > max)
+	{
+		result = APARTMENT_TYPE;
+		max = apartmentIncome;
+	}
+	if (conferenceRoomIncome > max)
+	{
+		result = CONFERENCE_TYPE;
+		max = conferenceRoomIncome;
+	}
+	if (doubleRoomIncome > max)
+	{
+		result = DOUBLE_TYPE;
+		max = doubleRoomIncome;
+	}
+	if (luxuryRoomIncome > max)
+	{
+		result = LUXURY_TYPE;
+		max = luxuryRoomIncome;
+	}
+	if (singleRoomType > max)
+	{
+		result = SINGLE_TYPE;
+		max = singleRoomType;
+	}
+
+	this->bestRoom = result;
+	return result;
 }
 
-int IncomeManager::analyseBestPeriod(int year)
+MyString IncomeManager::getBestRoomk() const
 {
-    double maxIncome = 0;
-    int bestMonth = 1;
-
-    for (int i = 1; i <= MONTH_COUNT; i++)
-    {
-        if (getIncomeForMonth(i, year) > maxIncome)
-        {
-            maxIncome = getIncomeForMonth(i, year);
-            bestMonth = i;
-        }
-    }
-    return bestMonth;
+	return this->bestRoom;
 }
 
 
-void IncomeManager::calculateIncomeByRoomType() 
-{ 
-
-    for (int i = 0; i < incomesByRoom.getSize(); ++i)
-    {
-        incomesByRoom[i].income = 0; 
-    }
-
-    const MyVector<Reservation>& reservations = reservationManager.getAllReservations();
-
-    for (int i = 0; i < reservations.getSize(); ++i)
-    {
-        const MyString& type = reservations[i].getRoom()->getType();
-        double income = reservations[i].getBill();
-
-        for (int j = 0; j < incomesByRoom.getSize(); ++j)
-        {
-            if (incomesByRoom[j].roomType == type)
-            {
-                incomesByRoom[j].income += income;
-                break;
-            }
-        }
-    }
-}
-
-const MyVector<IncomeByRoom>& IncomeManager::getIncomeByRoomType() const
+MyString IncomeManager::analyseBestPeriod(int year)
 {
-    return this->incomesByRoom;
+	double maxIncome = 0;
+	int bestMonth = 1;
+
+	for (int i = 1; i <= MONTH_COUNT; i++)
+	{
+		if (getIncomeForMonth(i, year) > maxIncome)
+		{
+			maxIncome = getIncomeForMonth(i, year);
+			bestMonth = i;
+		}
+	}
+
+	MyString result;
+
+	switch (bestMonth) {
+	case 1: result = "Januaru"; break;
+	case 2:  result = "February"; break;
+	case 3:  result = "March"; break;
+	case 4:  result = "April"; break;
+	case 5:  result = "May"; break;
+	case 6:  result = "June"; break;
+	case 7:  result = "July"; break;
+	case 8:  result = "August"; break;
+	case 9:  result = "September"; break;
+	case 10:  result = "October";break;
+	case 11:  result = "November";break;
+	case 12:  result = "December";break;
+	default:  result = "Invalid  month";break;
+	}
+
+	return result;
 }
+
+double IncomeManager::calculateIncomeByRoomType(const MyString& type)
+{
+	const MyVector<Reservation>& reservations = reservationManager.getAllReservations();
+
+	int count = reservations.getSize();
+
+	double result = 0;
+
+	for (int i = 0; i < count; i++)
+	{
+		if (reservations[i].getRoom()->getType() == type)
+		{
+			result += reservations[i].getBill();
+		}
+	}
+
+	return result;
+}
+
 
 void IncomeManager::exportReportToFile(const MyString& fileName) const
 {
 
 }
 
-IncomeByRoom::IncomeByRoom(const MyString& roomType)
-{
-    this->roomType = roomType;
-    this->income = 0;
-}
+

@@ -32,4 +32,29 @@ Guest GuestManager::getGuestByClientNumber(int number)
 			return guests[i];
 		}
 	}
+
+	throw std::invalid_argument("The user does not exist");
+}
+
+MyString GuestManager::getAllClientsClassifications() const
+{
+	int guestsCount = this->guests.getSize();
+
+	if (guestsCount == 0)
+	{
+		return MyString("Do not have any clients\n");
+	}
+
+	MyString result("Our guests: \n");
+
+	for (int i = 0; i < guestsCount; i++)
+	{
+		result += "\t";
+		result += guests[i].getFullName();
+		result += " - ";
+		result += guests[i].getClassificaytin();
+		result += "\n";
+	}
+
+	return result;
 }

@@ -46,8 +46,6 @@ const MyString ACCOUNTANT_AS_STR = "Accountant";
 const MyString RECEPTIONIST_AS_STR = "Receptionist";
 
 
-
-//const MyString ACCOUNTANT_USERNAME = "SallyBodeva";
-//const MyString RECEPTIONIST_USERNAME = "KatrinGeorg";
+const MyString REPORT_BEST_ROOM_PERIOD_FILE = "best.txt";
 
 const MyString GENERAL_PASSWORD = "123456";

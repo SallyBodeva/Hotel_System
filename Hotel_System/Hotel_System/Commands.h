@@ -99,43 +99,46 @@ public:
 	void execute(System& system, const MyVector<MyString>& args) const override;
 };
 
+class CalculateIncomeDay : public Command {
+public:
 
-//class RegisterGuest : public Command {
-//public:
-//
-//	RegisterGuest() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
-//class CreateReservation : public Command {
-//public:
-//
-//	CreateReservation() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
-//class ViewAvailableRooms : public Command {
-//public:
-//
-//	ViewAvailableRooms() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
-//class ViewCurrentResevations : public Command {
-//public:
-//	ViewCurrentResevations() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
-//class DeleteReservation : public Command {
-//public:
-//
-//	DeleteReservation() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
-//
-//class CalculateIncome : public Command {
-//public:
-//	CalculateIncome() = default;
-//	void execute(System& system, const MyVector<MyString>& args) const override;
-//};
+	CalculateIncomeDay() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class CalculateIncomeMonth : public Command {
+public:
+
+	CalculateIncomeMonth() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class CalculateIncomeYear : public Command {
+public:
+
+	CalculateIncomeYear() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class GetGuestLoyalty : public Command {
+public:
+
+	GetGuestLoyalty() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class CalculateIncomeByRoomType : public Command {
+public:
+
+	CalculateIncomeByRoomType() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class SaveReportForBestRoomAndPeriod : public Command {
+public:
+
+	SaveReportForBestRoomAndPeriod() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+

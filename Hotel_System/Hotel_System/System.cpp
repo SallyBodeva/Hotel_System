@@ -1,6 +1,11 @@
 #include "System.h"
 #include <sstream>
 
+System::System() : reservationManager(), incomeManager(reservationManager)
+{
+
+}
+
 void System::run()
 {
 	try
@@ -87,19 +92,37 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 	else if (command == "view_current_reservations") {
 		cmd = new ViewCurrentReservations();
 	}
-	/*else if (command == "calculateincome") {
-		cmd = new CalculateIncome();
+	else if (command == "calculate_income_day") {
+		cmd = new CalculateIncomeDay();
 	}
+	else if (command == "calculate_income_month") {
+		cmd = new CalculateIncomeMonth();
+	}
+	else if (command == "calculate_income_year") {
+		cmd = new CalculateIncomeYear();
+	}
+	else if (command == "get_guests_loyalty") {
+		cmd = new GetGuestLoyalty();
+	}
+	else if (command == "calculate_income_room_type") {
+		cmd = new CalculateIncomeByRoomType();
+	}
+	else if (command == "print_report_best_room_period")
+	{
+		cmd = new SaveReportForBestRoomAndPeriod();
+	}
+
 	else {
 		std::cout << "Unknown command: " << command << std::endl;
 		return;
-	}*/
+	}
 
 	if (cmd) 
 	{
 		cmd->execute(*this, arguments);
 		delete cmd;
 	}
+
 }
 
 UserManager& System::getUserManager()
@@ -179,13 +202,13 @@ void System::displayMenu() const
 
 		if (currentUser->getRole() == Role::Accountant)
 		{
-			std::cout << "2. Calculate Income" << std::endl;
+			std::cout << "calculate_income_day" << std::endl; // done
 			std::cout << "3. View income reports" << std::endl;
-			std::cout << "4. View Client Activity and Loyalty" << std::endl;
+			std::cout << "get_guests_loyalty" << std::endl; // done
 			std::cout << "------------------------------------" << std::endl;
 			std::cout << "log_out" << std::endl; //done
 		}
-		std::cout << "0. Exit System (and Save Data)" << std::endl;
+		std::cout << "exit" << std::endl;
 	}
 
 	std::cout << "------------------------------------" << std::endl;

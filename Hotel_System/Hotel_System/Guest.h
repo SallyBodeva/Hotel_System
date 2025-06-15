@@ -22,6 +22,7 @@ public:
 	int getAllReservationsCount()const;
 
 	MyString getFullName() const;
+	MyString getClassificaytin() const;
 
 	int getClientNumber() const;
 	const MyVector<Reservation*>& getHistiry() const;

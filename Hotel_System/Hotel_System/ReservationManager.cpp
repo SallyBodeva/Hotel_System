@@ -4,12 +4,12 @@ Reservation ReservationManager::createReservation(const Guest& guest, Room* room
 {
 	if (room == nullptr)
 	{
-		throw std::invalid_argument("Invalid room!");
+		throw std::invalid_argument("Invalid room!\n");
 	}
 
 	if (!(room->isAvailableDuringPeriod(period)))
 	{
-		throw std::invalid_argument("Room not available for the requested period.");
+		throw std::invalid_argument("Room not available for the requested period.\n");
 	}
 
 	Reservation r(guest, room, period);

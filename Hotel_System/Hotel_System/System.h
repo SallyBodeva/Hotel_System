@@ -17,7 +17,7 @@
 class System {
 public:
     
-    System() = default;
+    System();
     ~System() = default;
 
     void run(); 

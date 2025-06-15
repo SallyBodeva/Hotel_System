@@ -11,6 +11,8 @@ public:
 
 	Guest getGuestByClientNumber(int number);
 
+	MyString getAllClientsClassifications() const;
+
 	void saveGuestsToFile();
 	void loadGuestsFromFile();
 

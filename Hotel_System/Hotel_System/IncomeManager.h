@@ -6,22 +6,13 @@
 #include "Period.h"
 
 
-struct IncomeByRoom
-{
-    IncomeByRoom() = default;
-    IncomeByRoom(const MyString& roomType);
-    MyString roomType;
-    double income;
-};
 
 class IncomeManager {
 private:
 
-   /* Room* bestRoom;
-    Period bestPeriod;*/
+    MyString bestRoom;
 
-    ReservationManager reservationManager;
-    MyVector<IncomeByRoom> incomesByRoom;
+    const ReservationManager& reservationManager;
 
 public:
     IncomeManager() = default;
@@ -32,10 +23,12 @@ public:
     double getIncomeForYear(int year) const;
     
     MyString analyseBestRoom();
-    int analyseBestPeriod(int year);
+    MyString getBestRoomk()const;
 
-    void calculateIncomeByRoomType();
-    const MyVector<IncomeByRoom>& getIncomeByRoomType() const;
+    MyString analyseBestPeriod(int year);
+
+    double calculateIncomeByRoomType(const MyString& type);
+
 
     void exportReportToFile(const MyString& fileName) const;
 

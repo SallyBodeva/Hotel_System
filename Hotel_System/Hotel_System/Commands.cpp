@@ -1,6 +1,7 @@
 #include "Commands.h"
 #include "Constants.h"
 #include "System.h"
+#include <fstream>
 
 void LogIn::execute(System& system, const MyVector<MyString>& args) const
 {
@@ -257,4 +258,179 @@ void ViewCurrentReservations::execute(System& system, const MyVector<MyString>& 
 	{
 		std::cout << "Invalid info, please try again!\n";
 	}
+}
+
+void CalculateIncomeDay::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		MyString input = args[0];
+
+		int day = input.substr(0, 2).toInt();
+		int month = input.substr(3, 2).toInt();
+		int year = input.substr(6, 4).toInt();
+
+		Date date(day, month, year);
+
+		double income = system.getIncomeManager().getIncomeForDay(date);
+
+		std::cout << "The income for that day is: " << income << std::endl;
+
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void CalculateIncomeMonth::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		int month = args[0].toInt();
+		int year = args[1].toInt();
+
+		double income = system.getIncomeManager().getIncomeForMonth(month, year);
+
+		std::cout << "The income for that month is: " << income << std::endl;
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void CalculateIncomeYear::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		int year = args[0].toInt();
+
+		double income = system.getIncomeManager().getIncomeForYear(year);
+
+		std::cout << "The income for that year is: " << income << std::endl;
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void GetGuestLoyalty::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		std::cout << system.getGuestManager().getAllClientsClassifications();
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void CalculateIncomeByRoomType::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		MyString roomType = args[0];
+
+		double incomeByRoom = system.getIncomeManager().calculateIncomeByRoomType(roomType);
+
+		std::cout << "The income that comes from " << roomType << " type is : " << incomeByRoom << std::endl;
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+//void GetBestRoom::execute(System& system, const MyVector<MyString>& args) const
+//{
+//	try
+//	{
+//		system.getIncomeManager().analyseBestRoom();
+//		MyString bestRoom = system.getIncomeManager().getBestRoomk();
+//		std::cout << bestRoom;
+//	}
+//	catch (const std::invalid_argument& e)
+//	{
+//		std::cout << e.what();
+//	}
+//	catch (const std::out_of_range& e)
+//	{
+//		std::cout << "Invalid info, please try again!\n";
+//	}
+//}
+
+//void BestPeriod::execute(System& system, const MyVector<MyString>& args) const
+//{
+//	try
+//	{
+//		int year = args[0].toInt();
+//
+//		std::cout << system.getIncomeManager().analyseBestPeriod(year);
+//	}
+//	catch (const std::invalid_argument& e)
+//	{
+//		std::cout << e.what();
+//	}
+//	catch (const std::out_of_range& e)
+//	{
+//		std::cout << "Invalid info, please try again!\n";
+//	}
+//}
+
+void SaveReportForBestRoomAndPeriod::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		int year = args[0].toInt();
+		MyString bestPeriod = system.getIncomeManager().analyseBestPeriod(year);
+
+		system.getIncomeManager().analyseBestRoom();
+		MyString bestRoom = system.getIncomeManager().getBestRoomk();
+
+		std::ofstream reportFile(REPORT_BEST_ROOM_PERIOD_FILE.c_str());
+
+		if (!reportFile.is_open()) {
+			std::cerr << "Cannot open file." << std::endl;
+			return;
+		}
+
+		reportFile << "=== Best Room and Period Report ===\n\n";
+		reportFile << "Year: " << year << "\n";
+		reportFile << "Best Period: " << bestPeriod.c_str() << "\n";
+		reportFile << "Best Room: " << bestRoom.c_str() << "\n";
+
+		reportFile.close();
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+
 }

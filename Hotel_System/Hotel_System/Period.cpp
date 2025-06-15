@@ -104,20 +104,10 @@ int Period::getNightsCount() const
 	return nights;
 }
 
-bool Period::includes(Date partivularDate) const
+bool Period::includes(Date particularDate) const
 {
-	if (partivularDate.day >= startDate.day && partivularDate.day <= endDate.day)
-	{
-		if (partivularDate.month >= startDate.month && partivularDate.month <= endDate.month)
-		{
-			if (partivularDate.year == startDate.year)
-			{
-				return true;
-			}
-		}
-	}
+	return (startDate <= particularDate && particularDate <= endDate);
 
-	return false;
 }
 
 int Period::getDaysInMonth(int month, int year) const
