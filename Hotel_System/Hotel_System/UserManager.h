@@ -12,6 +12,8 @@ public:
 	User* getUserByUserName(const MyString& username);
 	void printHistory();
 
+	void free();
+
 private:
 	User* loggedUser;
 	MyVector<User*> users;

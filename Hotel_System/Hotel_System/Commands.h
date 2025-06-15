@@ -141,4 +141,8 @@ public:
 	void execute(System& system, const MyVector<MyString>& args) const override;
 };
 
-
+class Exit : public Command {
+public:
+	Exit() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};

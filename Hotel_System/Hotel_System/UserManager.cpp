@@ -64,3 +64,13 @@ User* UserManager::getUserByUserName(const MyString& username)
 void UserManager::printHistory()
 {
 }
+
+void UserManager::free()
+{
+	int usersCount = this->users.getSize();
+
+	for (int i = 0; i < usersCount; i++)
+	{
+		delete users[i];
+	}
+}

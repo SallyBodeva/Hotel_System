@@ -16,6 +16,8 @@ public:
 
 	MyString getAvailableRoomsDurinPeriod(const Period& period);
 
+	void free();
+
 private:
 
 	MyVector <Room*> rooms;

@@ -21,7 +21,7 @@ public:
     ~System() = default;
 
     void run(); 
-    void executeCommand(const MyString& command, const MyVector<MyString>& arguments);
+    void executeCommand(const MyString& command, const MyVector<MyString>& arguments, bool isExist);
 
     UserManager& getUserManager();
     RoomManager& getRoomManager();
@@ -33,6 +33,7 @@ public:
     void setCurrentUser(User* user);
     void logOut();
 
+    bool isCommandAllowdForUser(const MyString& command);
 
     //void loadData();
     //void saveData();

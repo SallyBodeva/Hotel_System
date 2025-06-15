@@ -62,7 +62,7 @@ void LogOut::execute(System& system, const MyVector<MyString>& args) const
 	if (system.getCurrentUser() != nullptr)
 	{
 		system.logOut();
-		std::cout << "Logging out is successful!";
+		std::cout << "Logging out is successful!\n";
 	}
 }
 
@@ -364,42 +364,6 @@ void CalculateIncomeByRoomType::execute(System& system, const MyVector<MyString>
 	}
 }
 
-//void GetBestRoom::execute(System& system, const MyVector<MyString>& args) const
-//{
-//	try
-//	{
-//		system.getIncomeManager().analyseBestRoom();
-//		MyString bestRoom = system.getIncomeManager().getBestRoomk();
-//		std::cout << bestRoom;
-//	}
-//	catch (const std::invalid_argument& e)
-//	{
-//		std::cout << e.what();
-//	}
-//	catch (const std::out_of_range& e)
-//	{
-//		std::cout << "Invalid info, please try again!\n";
-//	}
-//}
-
-//void BestPeriod::execute(System& system, const MyVector<MyString>& args) const
-//{
-//	try
-//	{
-//		int year = args[0].toInt();
-//
-//		std::cout << system.getIncomeManager().analyseBestPeriod(year);
-//	}
-//	catch (const std::invalid_argument& e)
-//	{
-//		std::cout << e.what();
-//	}
-//	catch (const std::out_of_range& e)
-//	{
-//		std::cout << "Invalid info, please try again!\n";
-//	}
-//}
-
 void SaveReportForBestRoomAndPeriod::execute(System& system, const MyVector<MyString>& args) const
 {
 	try
@@ -433,4 +397,17 @@ void SaveReportForBestRoomAndPeriod::execute(System& system, const MyVector<MySt
 		std::cout << "Invalid info, please try again!\n";
 	}
 
+}
+
+void Exit::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		system.getUserManager().free();
+		system.getRoomManager().free();
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what();
+	}
 }

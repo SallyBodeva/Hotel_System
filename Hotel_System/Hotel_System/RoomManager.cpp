@@ -41,3 +41,13 @@ MyString RoomManager::getAvailableRoomsDurinPeriod(const Period& period)
 
 	return result;
 }
+
+void RoomManager::free()
+{
+	int roomsCount = this->rooms.getSize();
+
+	for (int i = 0; i < roomsCount; i++)
+	{
+		delete rooms[i];
+	}
+}
