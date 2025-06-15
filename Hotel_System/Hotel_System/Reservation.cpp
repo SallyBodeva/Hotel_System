@@ -3,13 +3,13 @@
 
 int Reservation::lastReservationId = 1;
 
-Reservation::Reservation(const Guest& guest, const MyVector<Guest>& guests, Room* room, const Period& period) 
+Reservation::Reservation(const Guest& guest,  Room* room, const Period& period) 
 {
 	this->reservationNumber = lastReservationId++;
 	this->mainGuest = guest;
-	this->otherGuests = guests;
 	this->room = room;
 	this->period = period;
+
 
 	setBill(period);
 }
@@ -24,7 +24,7 @@ const Guest& Reservation::getGuest() const
 	return this->mainGuest;
 }
 
-const Period& Reservation::getPeriod() const
+const Period& Reservation::getPeriod() const 
 {
 	return this->period;
 }
@@ -47,6 +47,12 @@ double Reservation::getDailyBill() const
 	}
 	return this->room->getPrice();
 }
+
+void Reservation::addAditionalGuest(const Guest& guest)
+{
+	this->additionalGuests.push_back(guest);
+}
+
 
 void Reservation::setBill(const Period& period)
 {

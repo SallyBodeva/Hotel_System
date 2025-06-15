@@ -30,6 +30,7 @@ public:
 
 	int toInt() const;
 	double toDouble() const;
+	static MyString toStr(int value);
 
 	friend std::istream& operator>>(std::istream& is, MyString& obj);
 	friend std::ostream& operator<<(std::ostream& os, const MyString& obj);

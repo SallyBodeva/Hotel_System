@@ -11,7 +11,7 @@ void LogIn::execute(System& system, const MyVector<MyString>& args) const
 
 		User* user = system.getUserManager().getUserByUserName(userName);
 
-		if (user!= nullptr && user->getPassword() == password)
+		if (user != nullptr && user->getPassword() == password)
 		{
 			system.setCurrentUser(user);
 			std::cout << "Login succssfull!\n";
@@ -46,7 +46,7 @@ void RegisterEmployee::execute(System& system, const MyVector<MyString>& args) c
 			r = Role::Accountant;
 		}
 
-		system.getUserManager().registerUser(userName,password,r);
+		system.getUserManager().registerUser(userName, password, r);
 
 		std::cout << "User registered successfully!";
 	}
@@ -114,11 +114,25 @@ void ViewAvailabeRooms::execute(System& system, const MyVector<MyString>& args) 
 {
 	try
 	{
-		
+		MyString startDate = args[0];
+		MyString endDate = args[1];
+
+		int startDay = startDate.substr(0, 2).toInt();
+		int startMonth = startDate.substr(3, 2).toInt();
+		int startyear = startDate.substr(6, 4).toInt();
+
+		int endDay = endDate.substr(0, 2).toInt();
+		int endMonth = endDate.substr(3, 2).toInt();
+		int endyear = endDate.substr(6, 4).toInt();
+
+		Period period(startDay, startMonth, startyear, endDay, endMonth, endyear);
+
+		std::cout << system.getRoomManager().getAvailableRoomsDurinPeriod(period) << std::endl;
+
 	}
 	catch (const std::exception&)
 	{
-
+		std::cout << "Invalid info, please try again!\n";
 	}
 }
 
@@ -133,7 +147,7 @@ void RegisterGuest::execute(System& system, const MyVector<MyString>& args) cons
 
 		system.getGuestManager().addGuest(firstName, lastName, phoneNumner, emial);
 
-		std::cout << "Guest " << firstName << " " << lastName << "registered successfully!" << std::endl;
+		std::cout << "Guest " << firstName << " " << lastName << " registered successfully!" << std::endl;
 
 	}
 	catch (const std::out_of_range& e)
@@ -147,8 +161,97 @@ void MakeReservation::execute(System& system, const MyVector<MyString>& args) co
 {
 	try
 	{
-		int mainGuestId = args[]
-		int guestsCount = 
+		int mainGuestId = args[0].toInt();
+		int roomNumber = args[1].toInt();
+		MyString startDate = args[2];
+		MyString endDate = args[3];
+
+		int startDay = startDate.substr(0, 2).toInt();
+		int startMonth = startDate.substr(3, 2).toInt();
+		int startyear = startDate.substr(6, 4).toInt();
+
+		int endDay = endDate.substr(0, 2).toInt();
+		int endMonth = endDate.substr(3, 2).toInt();
+		int endyear = endDate.substr(6, 4).toInt();
+
+
+		Guest g = system.getGuestManager().getGuestByClientNumber(mainGuestId);
+		Room* r = system.getRoomManager().getRoomByNumber(roomNumber);
+		Period period(startDay, startMonth, startyear, endDay, endMonth, endyear);
+
+		system.getReservationManager().createReservation(g, r, period);
+
+		std::cout << "Successfullt created reservation!\n";
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void CancelReservation::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		int reservationId = args[0].toInt();
+
+		system.getReservationManager().deleteReservation(reservationId);
+
+		std::cout << "Reservation is deleted!\n";
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void AddAdditionalGuest::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		int reservationId = args[0].toInt();
+
+		int countGuests = args[1].toInt();
+
+		int nextIndex = 2;
+
+		for (int i = 0; i < countGuests; i++)
+		{
+			int guestId = args[nextIndex++].toInt();
+			Guest g = system.getGuestManager().getGuestByClientNumber(guestId);
+			system.getReservationManager().addAdditionalGuests(reservationId, g);
+		}
+
+		std::cout << "Successfully added new guests!\n";
+
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
+	}
+	catch (const std::out_of_range& e)
+	{
+		std::cout << "Invalid info, please try again!\n";
+	}
+}
+
+void ViewCurrentReservations::execute(System& system, const MyVector<MyString>& args) const
+{
+	try
+	{
+		std::cout << system.getReservationManager().getCurrentReservations() << std::endl;
+	}
+	catch (const std::invalid_argument& e)
+	{
+		std::cout << e.what();
 	}
 	catch (const std::out_of_range& e)
 	{

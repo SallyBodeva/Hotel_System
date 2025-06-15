@@ -1,4 +1,5 @@
 #include "RoomManager.h"
+#include <sstream>
 
 void RoomManager::addRoom(Room* room)
 {
@@ -22,17 +23,21 @@ Room* RoomManager::getRoomByNumber(int roomNumber)
 	return nullptr;
 }
 
+MyString RoomManager::getAvailableRoomsDurinPeriod(const Period& period)
+{
+	MyString result("Available rooms numbers: ");
 
-//void RoomManager::setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods)
-//{
-//}
-//
-//bool RoomManager::serialize(const char* fileName) const
-//{
-//	return false;
-//}
-//
-//Room* RoomManager::deserialize(const char* fileName)
-//{
-//	return nullptr;
-//}
+	int count = this->rooms.getSize();
+
+	for (int i = 0; i < count; i++)
+	{
+		if (rooms[i]->isAvailableDuringPeriod(period))
+		{
+			int number = rooms[i]->getRoomNumber();
+			result += MyString::toStr(number);
+			result += " ";
+		}
+	}
+
+	return result;
+}

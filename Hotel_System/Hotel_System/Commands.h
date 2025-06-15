@@ -63,6 +63,14 @@ public:
 	void execute(System& system, const MyVector<MyString>& args) const override;
 };
 
+
+class ViewCurrentReservations : public Command {
+public:
+
+	ViewCurrentReservations() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
 class RegisterGuest : public Command {
 public:
 
@@ -74,6 +82,20 @@ class MakeReservation : public Command {
 public:
 
 	MakeReservation() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class CancelReservation : public Command {
+public:
+
+	CancelReservation() = default;
+	void execute(System& system, const MyVector<MyString>& args) const override;
+};
+
+class AddAdditionalGuest : public Command {
+public:
+
+	AddAdditionalGuest() = default;
 	void execute(System& system, const MyVector<MyString>& args) const override;
 };
 

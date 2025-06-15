@@ -38,6 +38,15 @@ bool operator==(const Period& lhs, const Period& rhs)
 	return false;
 }
 
+Period::Period(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear)
+{
+	Date startDate(startDay, startMonth, startYear);
+	Date endDate(endDay, endMonth, endYear);
+
+	this->startDate = startDate;
+	this->endDate = endDate;
+}
+
 MyString Period::getPeriod()
 {
 	MyString result;
@@ -167,6 +176,13 @@ int Period::getDaysInYear(int year) const
 	return days;
 }
 
+
+Date::Date(int day, int month, int year)
+{
+	this->day = day;
+	this->month = month;
+	this->year = year;
+}
 
 int Date::getDaysInMonth() const
 {

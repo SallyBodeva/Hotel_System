@@ -11,6 +11,12 @@ enum class Status
 	UnderRenovation
 };
 
+struct RoomStatusPeriod 
+{
+	Period period;
+	Status status;
+};
+
 class Room {
 public:
 
@@ -29,32 +35,30 @@ public:
 	void setCalculatedPrice();
 	double getPrice() const;
 	double getInitialPrice() const;
-	void setFree();
-	void setStatus(const Status& status);
 	void setRoomNumber(int roomNumber);
 
 	bool isAvailableDuringPeriod(const Period& period) const;
-	void addNewPeriod(const Period& period);
-	void removePeriod(const Period& period);
-	MyString getStatus() const;
 
 	int getRoomNumber() const ;
 	int getPeopleCapacity() const;
 
-	const MyVector<Period>& getPeriodsTheRoomIsNotAvailable() const;
-
+	void addStatusPeriod(const RoomStatusPeriod& roomStatuPeriod);
+	MyVector<RoomStatusPeriod>& getStatusPerids();
+	
+	void changeStatusPeriodByPeriod(const Period& period);
 
 	virtual MyString getType() const = 0;
 
 	
 private:
+
 	int roomNumber;
 	int peopleCapacity;
 	double intialPrice;
 	double calculatedPrice;
-	Status status;
 	PricingStrategy* pricingStrategy;
 	bool isAvailable;
 
-	MyVector<Period> periodsTheRoomIsNotAvailable;
+
+	MyVector<RoomStatusPeriod> statusPeriods;
 };

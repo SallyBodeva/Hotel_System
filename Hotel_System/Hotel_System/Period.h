@@ -7,6 +7,9 @@ struct Date
     int month;
     int day;
 
+    Date() = default;
+    Date(int day, int month, int year);
+
     int getDaysInMonth() const;
 
    const MyString getDate() const;
@@ -21,6 +24,7 @@ class Period {
 public:
 
     Period() = default;
+    Period(int startDay,int startMonth, int startYear,int endDay, int endMonth, int endYear);
     MyString getPeriod();
     const Date getStartdate() const;
     const Date getEndDate() const ;

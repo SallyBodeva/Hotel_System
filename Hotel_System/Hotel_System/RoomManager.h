@@ -14,11 +14,7 @@ public:
 	void addRoom(Room* room);
 	Room* getRoomByNumber(int roomNumber);
 
-	//MyString getAvailableRooms();
-
-	/*void setDeserializedData(int roomNum, int capacity, Status stat, double initialP, double calcP, const MyVector<Period>& periods);
-	bool serialize(const char* fileName) const;
-	Room* deserialize(const char* fileName);*/
+	MyString getAvailableRoomsDurinPeriod(const Period& period);
 
 private:
 

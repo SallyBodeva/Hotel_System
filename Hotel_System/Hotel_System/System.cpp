@@ -71,18 +71,23 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 		cmd = new RegisterGuest();
 	}
 	else if (command == "make_new_reservation") {
-		cmd = new RegisterGuest();
+		cmd = new MakeReservation();
 	}
-	/*    else if (command == "viewavailablerooms") {
-		cmd = new ViewAvailableRooms();
+	else if (command == "cancel_reservation")
+	{
+		cmd = new CancelReservation();
 	}
-	else if (command == "viewreservations") {
-		cmd = new ViewCurrentResevations();
+	 else if (command == "add_additional_guests_to_reservation") {
+		cmd = new AddAdditionalGuest();
 	}
-	else if (command == "cancelreservation") {
-		cmd = new DeleteReservation();
+	
+	else if (command == "view_available_rooms") {
+		cmd = new ViewAvailabeRooms();
 	}
-	else if (command == "calculateincome") {
+	else if (command == "view_current_reservations") {
+		cmd = new ViewCurrentReservations();
+	}
+	/*else if (command == "calculateincome") {
 		cmd = new CalculateIncome();
 	}
 	else {
@@ -90,7 +95,8 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 		return;
 	}*/
 
-	if (cmd) {
+	if (cmd) 
+	{
 		cmd->execute(*this, arguments);
 		delete cmd;
 	}
@@ -153,20 +159,21 @@ void System::displayMenu() const
 			std::cout << "register_new_employee" << std::endl; // done
 			std::cout << "add_room" << std::endl; // done
 			std::cout << "change_pricing_strategy" << std::endl; // done
-			std::cout << "view_available_rooms" << std::endl;
-			std::cout << "view_current_reservations" << std::endl;
+			std::cout << "view_available_rooms" << std::endl; //done
+			std::cout << "view_current_reservations" << std::endl; //done
 			std::cout << "------------------------------------" << std::endl;
 			std::cout << "log_out" << std::endl;// done
 		}
 
 		if (currentUser->getRole() == Role::Receptionist) {
 			std::cout << "register_guest" << std::endl; // done 
-			std::cout << "make_new_reservation" << std::endl;
-			std::cout << "4. View Available Rooms" << std::endl;
-			std::cout << "5. View Current Reservations" << std::endl;
-			std::cout << "6. Cancel reservation" << std::endl;
+			std::cout << "make_new_reservation" << std::endl; // done
+			std::cout << "add_additional_guests_to_reservation" << std::endl; // done
+			std::cout << "view_available_rooms" << std::endl; //done
+			std::cout << "view_current_reservations" << std::endl; //done
+			std::cout << "cancel_reservation" << std::endl; // done
 			std::cout << "------------------------------------" << std::endl;
-			std::cout << "7. Log Out" << std::endl;
+			std::cout << "log_out" << std::endl;
 		}
 
 
@@ -176,7 +183,7 @@ void System::displayMenu() const
 			std::cout << "3. View income reports" << std::endl;
 			std::cout << "4. View Client Activity and Loyalty" << std::endl;
 			std::cout << "------------------------------------" << std::endl;
-			std::cout << "5. Log Out" << std::endl;
+			std::cout << "log_out" << std::endl; //done
 		}
 		std::cout << "0. Exit System (and Save Data)" << std::endl;
 	}

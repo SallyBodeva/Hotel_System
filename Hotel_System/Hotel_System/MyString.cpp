@@ -1,4 +1,5 @@
 #include "MyString.h"
+#include <sstream>
 
 MyString::MyString()
 {
@@ -243,6 +244,13 @@ double MyString::toDouble() const
 	}
 
 	return isNegative ? -result : result;
+}
+
+MyString MyString::toStr(int value)
+{
+	std::ostringstream oss;
+	oss << value;
+	return MyString(oss.str().c_str());
 }
 
 void MyString::moveFrom(MyString&& other)

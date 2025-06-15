@@ -46,6 +46,15 @@ int Guest::getAllReservationsCount() const
 	return this->previousReservations.getSize();
 }
 
+MyString Guest::getFullName() const
+{
+	 MyString result(this->firtsName);
+	 result += " ";
+	 result += this->lastName;
+
+	 return result;
+}
+
 int Guest::getClientNumber() const
 {
 	return this->clientNumber;
