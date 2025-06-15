@@ -13,8 +13,13 @@ public:
 
 	MyString getAllClientsClassifications() const;
 
-	void saveGuestsToFile();
-	void loadGuestsFromFile();
+	Guest readFromFile(std::ifstream& file);
+
+	Classification getClassificationFromStr(const MyString& type);
+
+	bool loadGuestsFromFile();
+	bool saveGuestsToFile();
+
 
 private:
 

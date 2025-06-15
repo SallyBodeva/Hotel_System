@@ -49,11 +49,11 @@ void RegisterEmployee::execute(System& system, const MyVector<MyString>& args) c
 
 		system.getUserManager().registerUser(userName, password, r);
 
-		std::cout << "User registered successfully!";
+		std::cout << "User registered successfully!\n";
 	}
 	catch (const std::out_of_range& e)
 	{
-		std::cout << "Invalid info, please try again!";
+		std::cout << "Invalid info, please try again!\n";
 	}
 }
 
@@ -148,7 +148,7 @@ void RegisterGuest::execute(System& system, const MyVector<MyString>& args) cons
 
 		system.getGuestManager().addGuest(firstName, lastName, phoneNumner, emial);
 
-		std::cout << "Guest " << firstName << " " << lastName << " registered successfully!" << std::endl;
+		std::cout << "Guest " << firstName << " " << lastName << " registered successfully!\n";
 
 	}
 	catch (const std::out_of_range& e)

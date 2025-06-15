@@ -1,5 +1,6 @@
 #include "System.h"
 #include <sstream>
+#include <fstream>
 
 System::System() : reservationManager(), incomeManager(reservationManager)
 {
@@ -10,6 +11,9 @@ void System::run()
 {
 	try
 	{
+
+		this->loadData();
+
 		std::cout << "--- HOTEL MANAGEMENT SYSTEM MENU ---" << std::endl;
 
 		this->userManager.seeder();
@@ -121,8 +125,9 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 	}
 	else if (command == "exit")
 	{
-		cmd = new Exit();
+		//cmd = new Exit();
 		isExit = true;
+		this->saveData();
 	}
 
 	else {
@@ -130,10 +135,13 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 		return;
 	}
 
-	if (cmd) 
+	if (command != "exit")
 	{
-		cmd->execute(*this, arguments);
-		delete cmd;
+		if (cmd)
+		{
+			cmd->execute(*this, arguments);
+			delete cmd;
+		}
 	}
 
 }
@@ -213,12 +221,21 @@ bool System::isCommandAllowdForUser(const MyString& command)
 	return false;
 }
 
+void System::loadData()
+{
+	this->guestManager.loadGuestsFromFile();
+}
+
+void System::saveData()
+{
+	this->guestManager.saveGuestsToFile();
+}
+
 
 void System::displayMenu() const
 {
 
 	std::cout << "------------------------------------" << std::endl;
-	std::cout << "Please choose the desired command!" << std::endl;
 
 	if (this->currentUser == nullptr)
 	{

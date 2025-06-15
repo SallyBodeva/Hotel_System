@@ -28,8 +28,16 @@ public:
 	const MyVector<Reservation*>& getHistiry() const;
 
 	int getDiscount() const;
+	void setClientNumber(int number);
+	void setClassification(const Classification& classification);
 
 	static int previousClientNumber;
+
+
+	bool saveToFile(std::ofstream& file);
+
+	
+
 private:
 
 	int clientNumber;

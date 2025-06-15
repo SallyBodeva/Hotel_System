@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Accountant.h"
+#include "Constants.h"
 #include "Commands.h"
 #include "GuestManager.h"
 #include "IncomeManager.h"
@@ -35,8 +36,8 @@ public:
 
     bool isCommandAllowdForUser(const MyString& command);
 
-    //void loadData();
-    //void saveData();
+    void loadData();
+    void saveData();
 
 private:
 

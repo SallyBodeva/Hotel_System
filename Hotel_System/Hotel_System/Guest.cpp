@@ -1,6 +1,7 @@
 #include "Guest.h"
 #include "Reservation.h"
 #include "Constants.h"
+#include <fstream>
 
 int Guest::previousClientNumber = 1;
 
@@ -18,12 +19,13 @@ void Guest::setClasification()
 {
 	int reservationsCount = getAllReservationsCount();
 
-	if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_GOLD)
+
+	if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_PLATINUM)
 	{
 		this->classifiication = Classification::Gold;
 		this->discoutPercent = DISCOUNT_PERCENT_FOR_GOLD;
 	}
-	else if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_PLATINUM)
+	else if (reservationsCount >= MIN_RESERVATIONS_FOR_BEIGN_GOLD)
 	{
 		this->classifiication = Classification::Platinum;
 		this->discoutPercent = DISCOUNT_PERCENT_FOR_PLATINUM;
@@ -37,8 +39,8 @@ void Guest::setClasification()
 
 void Guest::addNewReservation(Reservation* newReservation)
 {
-		previousReservations.push_back(newReservation);
-		setClasification();
+	previousReservations.push_back(newReservation);
+	setClasification();
 }
 
 int Guest::getAllReservationsCount() const
@@ -48,11 +50,11 @@ int Guest::getAllReservationsCount() const
 
 MyString Guest::getFullName() const
 {
-	 MyString result(this->firtsName);
-	 result += " ";
-	 result += this->lastName;
+	MyString result(this->firtsName);
+	result += " ";
+	result += this->lastName;
 
-	 return result;
+	return result;
 }
 
 MyString Guest::getClassificaytin() const
@@ -93,3 +95,40 @@ int Guest::getDiscount() const
 {
 	return this->discoutPercent;;
 }
+
+void Guest::setClientNumber(int number)
+{
+	this->clientNumber = number;
+}
+
+void Guest::setClassification(const Classification& classification)
+{
+	this->classifiication = classification;
+}
+
+bool Guest::saveToFile(std::ofstream& file)
+{
+	if (!file.is_open())
+	{
+		return false;
+	}
+
+	file << this->clientNumber;
+	file << " ";
+	file << this->firtsName;
+	file << " ";
+	file << this->lastName;
+	file << " ";
+	file << this->phoneNumber;
+	file << " ";
+	file << this->email;
+	file << " ";
+	file << this->getClassificaytin();
+	file << " ";
+	file << this->discoutPercent;
+	file << "\n";
+
+	return true;
+
+}
+

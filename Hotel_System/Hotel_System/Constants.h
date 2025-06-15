@@ -15,7 +15,7 @@ const MyString BASIC_PRICING = "Basic";
 const int MONTH_COUNT = 12;
 
 const int MAX_ARRAY_SIZE = 1024;
-const char ROOMS_FILE_NAME[MAX_ARRAY_SIZE] = "rooms.dat";
+//const char ROOMS_FILE_NAME[MAX_ARRAY_SIZE] = "rooms.dat";
 
 const int MIN_RESERVATIONS_FOR_BEIGN_GOLD = 6;
 const int MIN_RESERVATIONS_FOR_BEIGN_PLATINUM = 20;
@@ -47,5 +47,6 @@ const MyString RECEPTIONIST_AS_STR = "Receptionist";
 
 
 const MyString REPORT_BEST_ROOM_PERIOD_FILE = "best.txt";
+const MyString GUEST_FILE = "guests.txt";
 
 const MyString GENERAL_PASSWORD = "123456";

@@ -38,6 +38,7 @@ MyString RoomManager::getAvailableRoomsDurinPeriod(const Period& period)
 			result += " ";
 		}
 	}
+	result += "\n";
 
 	return result;
 }

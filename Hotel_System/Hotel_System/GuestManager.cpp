@@ -1,4 +1,6 @@
 #include "GuestManager.h"
+#include "Constants.h"
+#include <fstream>
 
 void GuestManager::addGuest(const MyString& firstName, const MyString& lastName, const MyString& phoneNumber, const MyString& email)
 {
@@ -57,4 +59,103 @@ MyString GuestManager::getAllClientsClassifications() const
 	}
 
 	return result;
+}
+
+Guest GuestManager::readFromFile(std::ifstream& file)
+{
+	if (!file.is_open())
+	{
+		return Guest();
+	}
+
+	MyString clientNumber;
+	MyString firstName;
+	MyString lastName;
+	MyString phoneNumber;
+	MyString email;
+	MyString classification;
+	int discount;
+
+	int reservationCount;
+
+	file >> clientNumber;
+
+	file >> firstName;
+	file >> lastName;
+	file >> phoneNumber;
+	file >> email;
+
+	file >> classification;
+	file >> discount;
+
+	Guest guest(firstName, lastName, phoneNumber, email);
+	guest.setClientNumber(clientNumber.toInt());
+	guest.setClassification(getClassificationFromStr(classification));
+
+
+	return guest;
+}
+
+Classification GuestManager::getClassificationFromStr(const MyString& type)
+{
+	if (type == "Regular")
+	{
+		return Classification::Regular;
+	}
+	else if (type == "Gold")
+	{
+		return Classification::Gold;
+	}
+	else if (type == "Platinum")
+	{
+		return Classification::Platinum;
+	}
+	return Classification::Regular;
+	/*else
+	{
+		throw std::invalid_argument("Invalid classification string!");
+	}*/
+}
+
+bool  GuestManager::loadGuestsFromFile()
+{
+	std::ifstream guestsFile(GUEST_FILE.c_str());
+
+	if (!guestsFile.is_open())
+	{
+		return false;
+	}
+
+	while (true)
+	{
+		Guest g = readFromFile(guestsFile);
+
+
+		if (guestsFile.eof())
+		{
+			break;
+		}
+
+		this->guests.push_back(g);
+
+	}
+	return true;
+}
+
+bool GuestManager::saveGuestsToFile()
+{
+	std::ofstream guestsFile(GUEST_FILE.c_str(),std::ios::app);
+	if (!guestsFile.is_open())
+	{
+		return false;
+	}
+
+	for (int i = 0; i < guests.getSize(); ++i)
+	{
+		guests[i].saveToFile(guestsFile);
+	}
+
+	guestsFile.close();
+	return true;
+
 }
