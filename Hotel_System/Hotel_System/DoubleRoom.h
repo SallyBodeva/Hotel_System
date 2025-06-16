@@ -7,4 +7,5 @@ public:
 	MyString getType()const override;
 
 	static int prevoius_Room_Number;
+	bool saveToFile(std::ofstream& file) override;
 };

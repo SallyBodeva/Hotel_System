@@ -155,7 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Accountant.h" />
-    <ClInclude Include="ActionLog.h" />
     <ClInclude Include="Apartment.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="ConferenceRoom.h" />

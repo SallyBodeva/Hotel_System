@@ -6,7 +6,7 @@ void GuestManager::addGuest(const MyString& firstName, const MyString& lastName,
 {
 
 	Guest g(firstName, lastName, phoneNumber, email);
-
+	g.setClientNumber(this->guests.getSize()+1);
 	this->guests.push_back(g);
 }
 
@@ -111,10 +111,7 @@ Classification GuestManager::getClassificationFromStr(const MyString& type)
 		return Classification::Platinum;
 	}
 	return Classification::Regular;
-	/*else
-	{
-		throw std::invalid_argument("Invalid classification string!");
-	}*/
+
 }
 
 bool  GuestManager::loadGuestsFromFile()
@@ -130,7 +127,6 @@ bool  GuestManager::loadGuestsFromFile()
 	{
 		Guest g = readFromFile(guestsFile);
 
-
 		if (guestsFile.eof())
 		{
 			break;
@@ -144,7 +140,7 @@ bool  GuestManager::loadGuestsFromFile()
 
 bool GuestManager::saveGuestsToFile()
 {
-	std::ofstream guestsFile(GUEST_FILE.c_str(),std::ios::app);
+	std::ofstream guestsFile(GUEST_FILE.c_str());
 	if (!guestsFile.is_open())
 	{
 		return false;

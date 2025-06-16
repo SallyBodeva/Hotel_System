@@ -3,7 +3,7 @@
 #include <fstream>
 #include "RoomFactory.h"
 
-Room::Room() : pricingStrategy(nullptr), roomNumber(0), peopleCapacity(0), intialPrice(0.0), calculatedPrice(0.0), isAvailable(true)
+Room::Room() : pricingStrategy(nullptr), roomNumber(0), peopleCapacity(0), intialPrice(0.0), calculatedPrice(0.0)
 {
 }
 
@@ -21,8 +21,6 @@ Room::Room(int peopleCapacity, double intitialPrice)
 	this->setStrategy(basic);
 	this->peopleCapacity = peopleCapacity;
 	this->intialPrice = intitialPrice;
-	this->isAvailable = true;
-
 	setCalculatedPrice();
 }
 
@@ -59,6 +57,11 @@ double Room::getPrice() const
 double Room::getInitialPrice() const
 {
 	return this->intialPrice;
+}
+
+void Room::setInitialPrive(int initialPrice)
+{
+	this->intialPrice = initialPrice;
 }
 
 

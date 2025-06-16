@@ -4,6 +4,8 @@
 #include "Room.h"
 #include "Guest.h"
 #include "Period.h"
+#include "RoomManager.h"
+#include "GuestManager.h"
 
 
 class ReservationManager {
@@ -18,7 +20,10 @@ public:
 
 	MyString getCurrentReservations();
 
-	const MyVector<Reservation>& getAllReservations() const ;
+	const MyVector<Reservation>& getAllReservations() const;
+
+	//Reservation readFromFile(std::ifstream& file);
+
 
 private:
 	MyVector<Reservation> reservations;

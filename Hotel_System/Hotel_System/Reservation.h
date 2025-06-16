@@ -18,13 +18,16 @@ public:
 
 	void addAditionalGuest(const Guest& guest);
 
+
+	bool saveToFile(std::ofstream& file);
+
 private:
 	void setBill(const Period& period);
 
 	int reservationNumber;
 	Guest mainGuest;
-	MyVector<Guest> additionalGuests; // валидирай броя на дадените хора и вида на стаята
-	Room* room; // динамична памет за менажиране (заради вида)
+	MyVector<Guest> additionalGuests; 
+	Room* room; 
 	Period period; 
 	double bill;
 

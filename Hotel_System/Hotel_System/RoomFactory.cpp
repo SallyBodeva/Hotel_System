@@ -4,6 +4,7 @@
 
 Room* RoomFactory::createRoomByType(const MyString& type)
 {
+
     if (type == APARTMENT_TYPE) {
         return new Apartment();
     }
@@ -20,7 +21,6 @@ Room* RoomFactory::createRoomByType(const MyString& type)
         return new SingleRoom();
     }
     else {
-        std::cerr << "Unknown room type: " << type << '\n';
         return nullptr;
     }
 }

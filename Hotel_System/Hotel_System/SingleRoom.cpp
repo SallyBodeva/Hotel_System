@@ -12,5 +12,21 @@ SingleRoom::SingleRoom() : Room(PEOPLE_CAPACITY_SINGLE_ROOM,INITIAL_PRICE_SINGLE
 
 MyString SingleRoom::getType()const
 {
-    return MyString("Single room");
+	return SINGLE_TYPE;
+}
+
+bool SingleRoom::saveToFile(std::ofstream& file)
+{
+	if (!file.is_open())
+	{
+		return false;
+	}
+
+	file << this->getType();
+	file << " ";
+	file << this->getRoomNumber();
+
+	file << "\n";
+
+	return true;
 }

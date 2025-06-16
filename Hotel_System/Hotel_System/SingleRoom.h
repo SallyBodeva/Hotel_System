@@ -7,4 +7,5 @@ public:
 	SingleRoom();
 	MyString getType()const  override;
 	static int previous_Room_Number;
-}; 
+	bool saveToFile(std::ofstream& file) override;
+};

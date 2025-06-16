@@ -5,8 +5,8 @@ class Apartment : public Room {
 public:
 	Apartment();
 	MyString getType()const override;
+	bool saveToFile(std::ofstream& file) override;
 
-	static int previous_Room_Number;
-
+	static int prevoius_Room_Number;
 private:
 };

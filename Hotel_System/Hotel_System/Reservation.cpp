@@ -1,5 +1,6 @@
 #include "Reservation.h"
 #include "Room.h"
+#include <fstream>
 
 int Reservation::lastReservationId = 1;
 
@@ -51,6 +52,30 @@ double Reservation::getDailyBill() const
 void Reservation::addAditionalGuest(const Guest& guest)
 {
 	this->additionalGuests.push_back(guest);
+}
+
+bool Reservation::saveToFile(std::ofstream& file)
+{
+	if (!file.is_open())
+	{
+		return false;
+	}
+
+	file << this->reservationNumber;
+	file << " ";
+	file << this->mainGuest.getClientNumber();
+	file << " ";
+	file << this->room->getRoomNumber();
+	file << " ";
+	file << this->period.getStartdate().getDate();
+	file << " ";
+	file << this->period.getEndDate().getDate();
+	file << " ";
+	file << this->bill;
+
+	file << "\n";
+
+	return true;
 }
 
 

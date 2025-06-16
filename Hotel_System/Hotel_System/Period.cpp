@@ -67,19 +67,6 @@ const Date Period::getEndDate() const
 	return this->endDate;
 }
 
-bool Period::serialize(std::ofstream& out) const
-{
-	out.write(reinterpret_cast<const char*>(&startDate), sizeof(startDate));
-	out.write(reinterpret_cast<const char*>(&endDate), sizeof(endDate));
-	return out.good();
-}
-
-bool Period::deserialize(std::ifstream& in)
-{
-	in.read(reinterpret_cast<char*>(&startDate), sizeof(startDate));
-	in.read(reinterpret_cast<char*>(&endDate), sizeof(endDate));
-	return in.good();
-}
 
 int Period::getNightsCount() const
 {

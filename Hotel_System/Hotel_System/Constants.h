@@ -48,5 +48,6 @@ const MyString RECEPTIONIST_AS_STR = "Receptionist";
 
 const MyString REPORT_BEST_ROOM_PERIOD_FILE = "best.txt";
 const MyString GUEST_FILE = "guests.txt";
+const MyString ROOM_FILE = "rooms.txt";
 
 const MyString GENERAL_PASSWORD = "123456";

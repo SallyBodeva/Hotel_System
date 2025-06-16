@@ -1,4 +1,5 @@
 #include "ReservationManager.h"
+#include <fstream>
 
 Reservation ReservationManager::createReservation(const Guest& guest, Room* room, const Period& period)
 {
@@ -96,3 +97,36 @@ const MyVector<Reservation>& ReservationManager::getAllReservations() const
 	return this->reservations;
 }
 
+//Reservation ReservationManager::readFromFile(std::ifstream& file)
+//{
+//	if (!file.is_open())
+//	{
+//		return Reservation();
+//	}
+//
+//	int reservationNumber;
+//	int mainGuestNumber;
+//	int roomNumber;
+//	MyString startDate;
+//	MyString endDate;
+//	double bill;
+//
+//	file >> reservationNumber;
+//	file >> mainGuestNumber;
+//	file >> roomNumber;
+//	file >> startDate;
+//	file >> endDate;
+//	file >> bill;
+//
+//
+//	int startDay = startDate.substr(0, 2).toInt();
+//	int startMonth = startDate.substr(3, 2).toInt();
+//	int startyear = startDate.substr(6, 4).toInt();
+//
+//	int endDay = endDate.substr(0, 2).toInt();
+//	int endMonth = endDate.substr(3, 2).toInt();
+//	int endyear = endDate.substr(6, 4).toInt();
+//
+//
+//}
+//

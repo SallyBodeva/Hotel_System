@@ -29,8 +29,7 @@ public:
     const Date getStartdate() const;
     const Date getEndDate() const ;
 
-    bool serialize(std::ofstream& out) const;
-    bool deserialize(std::ifstream& in);
+
 
     int getNightsCount() const;
     bool includes(Date partivularDate) const;

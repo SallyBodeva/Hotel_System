@@ -6,7 +6,6 @@ public:
 	ConferenceRoom();
 	MyString getType()const override;
 
-	static int previous_RoomN_Number;
-
-private:
+	static int prevoius_Room_Number;
+	bool saveToFile(std::ofstream& file) override;
 };

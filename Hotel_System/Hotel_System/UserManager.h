@@ -1,7 +1,7 @@
 #pragma once
+#include "User.h"
 #include "MyString.h"
 #include "MyVector.hpp"
-#include "ActionLog.h"
 
 class UserManager {
 public:
@@ -10,12 +10,10 @@ public:
 	bool registerUser(const MyString& username, const MyString& password, Role role);
 
 	User* getUserByUserName(const MyString& username);
-	void printHistory();
 
 	void free();
 
 private:
 	User* loggedUser;
 	MyVector<User*> users;
-	MyVector<ActionLog> logs;
 };

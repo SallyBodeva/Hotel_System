@@ -61,9 +61,6 @@ User* UserManager::getUserByUserName(const MyString& username)
 	return nullptr;
 }
 
-void UserManager::printHistory()
-{
-}
 
 void UserManager::free()
 {

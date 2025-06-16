@@ -158,9 +158,6 @@
     <ClInclude Include="UserManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ActionLog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IncomeManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>

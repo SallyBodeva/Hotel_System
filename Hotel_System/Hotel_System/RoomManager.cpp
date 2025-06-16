@@ -1,5 +1,8 @@
 #include "RoomManager.h"
 #include <sstream>
+#include <fstream>
+#include "RoomFactory.h"
+#include "Constants.h"
 
 void RoomManager::addRoom(Room* room)
 {
@@ -51,4 +54,72 @@ void RoomManager::free()
 	{
 		delete rooms[i];
 	}
+}
+
+Room* RoomManager::readRoomFromFile(std::ifstream& file)
+{
+	if (!file.is_open())
+	{
+		return nullptr;
+	}
+
+	MyString type;
+	int number;
+	
+	file >> type;
+	file >> number;
+
+	Room* room = RoomFactory::createRoomByType(type);
+	if (room == nullptr)
+	{
+		return nullptr;
+	}
+	room->setRoomNumber(number);
+
+	return room;
+}
+
+bool RoomManager::loadRoomsFromFile()
+{
+	std::ifstream roomsFile(ROOM_FILE.c_str());
+
+	if (!roomsFile.is_open())
+	{
+		return false;
+	}
+
+	while (true)
+	{
+		Room* room = readRoomFromFile(roomsFile);
+
+		if (room == nullptr)
+		{
+			break;
+		}
+
+		if (roomsFile.eof())
+		{
+			break;
+		}
+
+		this->rooms.push_back(room);
+	}
+	return true;
+}
+
+bool RoomManager::saveRoomsToFile()
+{
+	std::ofstream roomsFile(ROOM_FILE.c_str());
+	if (!roomsFile.is_open())
+	{
+		return false;
+	}
+
+	for (int i = 0; i < rooms.getSize(); ++i)
+	{
+		rooms[i]->saveToFile(roomsFile);
+	}
+
+	roomsFile.close();
+	return true;
 }

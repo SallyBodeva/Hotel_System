@@ -224,11 +224,13 @@ bool System::isCommandAllowdForUser(const MyString& command)
 void System::loadData()
 {
 	this->guestManager.loadGuestsFromFile();
+	this->roomManager.loadRoomsFromFile();
 }
 
 void System::saveData()
 {
 	this->guestManager.saveGuestsToFile();
+	this->roomManager.saveRoomsToFile();
 }
 
 

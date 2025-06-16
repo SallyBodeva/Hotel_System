@@ -15,8 +15,14 @@ public:
 	Room* getRoomByNumber(int roomNumber);
 
 	MyString getAvailableRoomsDurinPeriod(const Period& period);
+	
 
 	void free();
+
+	Room* readRoomFromFile(std::ifstream& file);
+
+	bool loadRoomsFromFile();
+	bool saveRoomsToFile();
 
 private:
 

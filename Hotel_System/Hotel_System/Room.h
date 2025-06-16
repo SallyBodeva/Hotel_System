@@ -35,12 +35,14 @@ public:
 	void setCalculatedPrice();
 	double getPrice() const;
 	double getInitialPrice() const;
+	void setInitialPrive(int initialPrice);
 	void setRoomNumber(int roomNumber);
 
 	bool isAvailableDuringPeriod(const Period& period) const;
 
 	int getRoomNumber() const ;
 	int getPeopleCapacity() const;
+	
 
 	void addStatusPeriod(const RoomStatusPeriod& roomStatuPeriod);
 	MyVector<RoomStatusPeriod>& getStatusPerids();
@@ -49,6 +51,7 @@ public:
 
 	virtual MyString getType() const = 0;
 
+	virtual bool saveToFile(std::ofstream& file) = 0;
 	
 private:
 
@@ -57,7 +60,6 @@ private:
 	double intialPrice;
 	double calculatedPrice;
 	PricingStrategy* pricingStrategy;
-	bool isAvailable;
 
 
 	MyVector<RoomStatusPeriod> statusPeriods;
