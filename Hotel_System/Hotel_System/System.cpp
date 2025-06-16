@@ -47,7 +47,7 @@ void System::run()
 
 			args.removeAt(0);
 
-			executeCommand(command, args,isExit);
+			executeCommand(command, args, isExit);
 
 		}
 	}
@@ -58,7 +58,7 @@ void System::run()
 
 }
 
-void System::executeCommand(const MyString& command, const MyVector<MyString>& arguments, bool isExit)
+void System::executeCommand(const MyString& command, const MyVector<MyString>& arguments, bool& isExit)
 {
 	if (command != "log_in" && command != "exit") {
 		if (!isCommandAllowdForUser(command)) {
@@ -94,10 +94,10 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 	{
 		cmd = new CancelReservation();
 	}
-	 else if (command == "add_additional_guests_to_reservation") {
+	else if (command == "add_additional_guests_to_reservation") {
 		cmd = new AddAdditionalGuest();
 	}
-	
+
 	else if (command == "view_available_rooms") {
 		cmd = new ViewAvailabeRooms();
 	}
@@ -125,7 +125,7 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 	}
 	else if (command == "exit")
 	{
-		//cmd = new Exit();
+		cmd = new Exit();
 		isExit = true;
 		this->saveData();
 	}
@@ -135,13 +135,11 @@ void System::executeCommand(const MyString& command, const MyVector<MyString>& a
 		return;
 	}
 
-	if (command != "exit")
+
+	if (cmd)
 	{
-		if (cmd)
-		{
-			cmd->execute(*this, arguments);
-			delete cmd;
-		}
+		cmd->execute(*this, arguments);
+		delete cmd;
 	}
 
 }
@@ -258,21 +256,21 @@ void System::displayMenu() const
 		std::cout << "------------------------------------" << std::endl;
 
 		if (currentUser->getRole() == Role::Manager) {
-			std::cout << "register_new_employee" << std::endl; 
-			std::cout << "add_room" << std::endl; 
-			std::cout << "change_pricing_strategy" << std::endl; 
+			std::cout << "register_new_employee" << std::endl;
+			std::cout << "add_room" << std::endl;
+			std::cout << "change_pricing_strategy" << std::endl;
 			std::cout << "view_available_rooms" << std::endl;
-			std::cout << "view_current_reservations" << std::endl; 
+			std::cout << "view_current_reservations" << std::endl;
 			std::cout << "------------------------------------" << std::endl;
 			std::cout << "log_out" << std::endl;
 		}
 
 		if (currentUser->getRole() == Role::Receptionist) {
-			std::cout << "register_guest" << std::endl; 
-			std::cout << "make_new_reservation" << std::endl; 
+			std::cout << "register_guest" << std::endl;
+			std::cout << "make_new_reservation" << std::endl;
 			std::cout << "add_additional_guests_to_reservation" << std::endl;
-			std::cout << "view_available_rooms" << std::endl; 
-			std::cout << "view_current_reservations" << std::endl; 
+			std::cout << "view_available_rooms" << std::endl;
+			std::cout << "view_current_reservations" << std::endl;
 			std::cout << "cancel_reservation" << std::endl;
 			std::cout << "------------------------------------" << std::endl;
 			std::cout << "log_out" << std::endl;
@@ -281,14 +279,14 @@ void System::displayMenu() const
 
 		if (currentUser->getRole() == Role::Accountant)
 		{
-			std::cout << "calculate_income_day" << std::endl; 
+			std::cout << "calculate_income_day" << std::endl;
 			std::cout << "calculate_income_month" << std::endl;
 			std::cout << "calculate_income_year" << std::endl;
 			std::cout << "calculate_income_room_type" << std::endl;
-			std::cout << "get_guests_loyalty" << std::endl; 
-			std::cout << "print_report_best_room_period" << std::endl; 
+			std::cout << "get_guests_loyalty" << std::endl;
+			std::cout << "print_report_best_room_period" << std::endl;
 			std::cout << "------------------------------------" << std::endl;
-			std::cout << "log_out" << std::endl; 
+			std::cout << "log_out" << std::endl;
 		}
 		std::cout << "exit" << std::endl;
 	}

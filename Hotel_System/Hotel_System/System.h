@@ -22,7 +22,7 @@ public:
     ~System() = default;
 
     void run(); 
-    void executeCommand(const MyString& command, const MyVector<MyString>& arguments, bool isExist);
+    void executeCommand(const MyString& command, const MyVector<MyString>& arguments, bool& isExist);
 
     UserManager& getUserManager();
     RoomManager& getRoomManager();
